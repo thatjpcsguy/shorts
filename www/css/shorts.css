@@ -3,6 +3,7 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 body {
+	padding-left: 30px;
 	font-family: "brandon-grotesque";
 	font-weight: "light";
 }
