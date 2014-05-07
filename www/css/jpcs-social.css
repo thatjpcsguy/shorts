@@ -1,0 +1,224 @@
+/* JPCS SOCIAL by James Peter Cooper-Stanbury */
+/* Icons from http://simpleicons.org */
+
+
+/* BASE */
+.jpcs-social {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-position: left;
+	background-size: contain;
+	background-color: #232323;
+	color: white;
+}
+
+.jpcs-social:hover {
+	background-color: white !important;
+	color: #232323;
+	cursor: pointer;
+}
+
+.jpcs-social.large {
+	width: 80px;
+	height: 80px;
+}
+
+.jpcs-social.dark {
+	background-color: #232323 !important;
+}
+.jpcs-social.dark:hover {
+	background-color: white !important;
+}
+
+/* NORMAL */
+.jpcs-social.aboutme {background-image: url('../img/jpcs-social/aboutme-512.png'); background-color: #00405D;} 
+.jpcs-social.amazon {background-image: url('../img/jpcs-social/amazon-512.png'); background-color: #FF9900;} 
+.jpcs-social.android {background-image: url('../img/jpcs-social/android-512.png'); background-color: #A4C639;} 
+.jpcs-social.appdotnet {background-image: url('../img/jpcs-social/appdotnet-512.png'); background-color: #898D90;} 
+.jpcs-social.apple {background-image: url('../img/jpcs-social/apple-512.png'); background-color: #B9BFC1;} 
+.jpcs-social.audioboo {background-image: url('../img/jpcs-social/audioboo-512.png'); background-color: #AE006E;} 
+.jpcs-social.aws {background-image: url('../img/jpcs-social/aws-512.png'); background-color: #FF9900;} 
+.jpcs-social.bebo {background-image: url('../img/jpcs-social/bebo-512.png'); background-color: #EE1010;} 
+.jpcs-social.behance {background-image: url('../img/jpcs-social/behance-512.png'); background-color: #1769FF;} 
+.jpcs-social.bitbucket {background-image: url('../img/jpcs-social/bitbucket-512.png'); background-color: #205081;} 
+.jpcs-social.blip {background-image: url('../img/jpcs-social/blip-256.png'); background-color: #FF1919;} 
+.jpcs-social.blogger {background-image: url('../img/jpcs-social/blogger-512.png'); background-color: #F57D00;} 
+.jpcs-social.bootstrap {background-image: url('../img/jpcs-social/bootstrap-512.png'); background-color: #0088CC;} 
+.jpcs-social.css3 {background-image: url('../img/jpcs-social/css3-512.png'); background-color: #0092BF;} 
+.jpcs-social.delicious {background-image: url('../img/jpcs-social/delicious-512.png'); background-color: #3274D1;} 
+.jpcs-social.deviantart {background-image: url('../img/jpcs-social/deviantart-512.png'); background-color: #4B5D50;} 
+.jpcs-social.digg {background-image: url('../img/jpcs-social/digg-512.png'); background-color: #14589E;} 
+.jpcs-social.disqus {background-image: url('../img/jpcs-social/disqus-512.png'); background-color: #2E9FFF;} 
+.jpcs-social.dribbble {background-image: url('../img/jpcs-social/dribbble-512.png'); background-color: #EA4C89;} 
+.jpcs-social.dropbox {background-image: url('../img/jpcs-social/dropbox-512.png'); background-color: #2281CF;} 
+.jpcs-social.drupal {background-image: url('../img/jpcs-social/drupal-512.png'); background-color: #0077C0;} 
+.jpcs-social.ebay {background-image: url('../img/jpcs-social/ebay-512.png'); background-color: #0064D2;} 
+.jpcs-social.email {background-image: url('../img/jpcs-social/email-512.png'); background-color: #232323;} 
+.jpcs-social.eventbrite {background-image: url('../img/jpcs-social/eventbrite-512.png'); background-color: #F3844C;} 
+.jpcs-social.evernote {background-image: url('../img/jpcs-social/evernote-512.png'); background-color: #6BB130;} 
+.jpcs-social.facebook {background-image: url('../img/jpcs-social/facebook-512.png'); background-color: #3B5998;} 
+.jpcs-social.fivehundredpx {background-image: url('../img/jpcs-social/500px-512.png'); background-color: #444444;} 
+.jpcs-social.flattr {background-image: url('../img/jpcs-social/flattr-512.png'); background-color: #F67C1A;} 
+.jpcs-social.flickr {background-image: url('../img/jpcs-social/flickr-512.png'); background-color: #FE0883; background-color: #0063DB;} 
+.jpcs-social.formspring {background-image: url('../img/jpcs-social/formspring-512.png'); background-color: #0076C0;} 
+.jpcs-social.forrst {background-image: url('../img/jpcs-social/forrst-512.png'); background-color: #5B9A68;} 
+.jpcs-social.foursquare {background-image: url('../img/jpcs-social/foursquare-512.png'); background-color: #2398C9;} 
+.jpcs-social.geeklist {background-image: url('../img/jpcs-social/geeklist-512.png'); background-color: #8CC63E;} 
+.jpcs-social.github {background-image: url('../img/jpcs-social/github-512.png'); background-color: #4183C4;} 
+.jpcs-social.goodreads {background-image: url('../img/jpcs-social/goodreads-512.png'); background-color: #5A471B;} 
+.jpcs-social.google {background-image: url('../img/jpcs-social/google-512.png'); background-color: #245DC1;} 
+.jpcs-social.googleplus {background-image: url('../img/jpcs-social/googleplus-512.png'); background-color: #D14836;} 
+.jpcs-social.grooveshark {background-image: url('../img/jpcs-social/grooveshark-512.png'); background-color: #000000;} 
+.jpcs-social.hackernews {background-image: url('../img/jpcs-social/hackernews-512.png'); background-color: #FF6600;} 
+.jpcs-social.heroku {background-image: url('../img/jpcs-social/heroku-512.png'); background-color: #6762A6;} 
+.jpcs-social.html5 {background-image: url('../img/jpcs-social/html5-512.png'); background-color: #F06529;} 
+.jpcs-social.imdb {background-image: url('../img/jpcs-social/imdb-512.png'); background-color: #F3CE00;} 
+.jpcs-social.instagram {background-image: url('../img/jpcs-social/instagram-512.png'); background-color: #3F729B;} 
+.jpcs-social.jquery {background-image: url('../img/jpcs-social/jquery-512.png'); background-color: #0867AB;} 
+.jpcs-social.jsfiddle {background-image: url('../img/jpcs-social/jsfiddle-512.png'); background-color: #4679A4;} 
+.jpcs-social.justgiving {background-image: url('../img/jpcs-social/justgiving-512.png'); background-color: #78256D;} 
+.jpcs-social.khanacademy {background-image: url('../img/jpcs-social/khanacademy-512.png'); background-color: #9DB63B;} 
+.jpcs-social.kickstarter {background-image: url('../img/jpcs-social/kickstarter-512.png'); background-color: #87C442;} 
+.jpcs-social.klout {background-image: url('../img/jpcs-social/klout-512.png'); background-color: #E24A25;} 
+.jpcs-social.lastfm {background-image: url('../img/jpcs-social/lastfm-512.png'); background-color: #D51007;} 
+.jpcs-social.layervault {background-image: url('../img/jpcs-social/layervault-512.png'); background-color: #26AE90;} 
+.jpcs-social.letterboxd {background-image: url('../img/jpcs-social/letterboxd-512.png'); background-color: #2C3641;} 
+.jpcs-social.linkedin {background-image: url('../img/jpcs-social/linkedin-512.png'); background-color: #007FB1;} 
+.jpcs-social.mediatemple {background-image: url('../img/jpcs-social/mediatemple-512.png'); background-color: #000000;} 
+.jpcs-social.myspace {background-image: url('../img/jpcs-social/myspace-512.png'); background-color: #008DDE;} 
+.jpcs-social.mysql {background-image: url('../img/jpcs-social/mysql-512.png'); background-color: #007597;} 
+.jpcs-social.orkut {background-image: url('../img/jpcs-social/orkut-512.png'); background-color: #ED2590;} 
+.jpcs-social.path {background-image: url('../img/jpcs-social/path-512.png'); background-color: #E41F11;} 
+.jpcs-social.picasa {background-image: url('../img/jpcs-social/picasa-512.png'); background-color: #4B5D5F;} 
+.jpcs-social.pinterest {background-image: url('../img/jpcs-social/pinterest-512.png'); background-color: #CB2027;} 
+.jpcs-social.pocket {background-image: url('../img/jpcs-social/pocket-512.png'); background-color: #EF4056;} 
+.jpcs-social.posterous {background-image: url('../img/jpcs-social/posterous-512.png'); background-color: #232323;}
+.jpcs-social.protoio {background-image: url('../img/jpcs-social/protoio-512.png'); background-color: #40C8F4;} 
+.jpcs-social.quora {background-image: url('../img/jpcs-social/quora-512.png'); background-color: #A82400;} 
+.jpcs-social.rails {background-image: url('../img/jpcs-social/rails-512.png'); background-color: #A62C39;} 
+.jpcs-social.rdio {background-image: url('../img/jpcs-social/rdio-512.png'); background-color: #006ED2;} 
+.jpcs-social.readability {background-image: url('../img/jpcs-social/readability-512.png'); background-color: #870000;} 
+.jpcs-social.reddit {background-image: url('../img/jpcs-social/reddit-512.png'); background-color: #CEE3F8; background-color: #FF4500;} 
+.jpcs-social.rss {background-image: url('../img/jpcs-social/rss-512.png'); background-color: #FF8300;} 
+.jpcs-social.skydrive {background-image: url('../img/jpcs-social/skydrive-512.png'); background-color: #094AB1;} 
+.jpcs-social.skype {background-image: url('../img/jpcs-social/skype-512.png'); background-color: #00AFF0;} 
+.jpcs-social.slideshare {background-image: url('../img/jpcs-social/slideshare-512.png'); background-color: #009999;} 
+.jpcs-social.soundcloud {background-image: url('../img/jpcs-social/soundcloud-512.png'); background-color: #FF6600;} 
+.jpcs-social.spotify {background-image: url('../img/jpcs-social/spotify-512.png'); background-color: #80B719;} 
+.jpcs-social.squarespace {background-image: url('../img/jpcs-social/squarespace-512.png'); background-color: #000000;} 
+.jpcs-social.stackexchange {background-image: url('../img/jpcs-social/stackexchange-512.png'); background-color: #1F5196;} 
+.jpcs-social.stackoverflow {background-image: url('../img/jpcs-social/stackoverflow-512.png'); background-color: #F47920;} 
+.jpcs-social.stumbleupon {background-image: url('../img/jpcs-social/stumbleupon-512.png'); background-color: #EB4924;} 
+.jpcs-social.superuser {background-image: url('../img/jpcs-social/superuser-512.png'); background-color: #2DABE2;} 
+.jpcs-social.ted {background-image: url('../img/jpcs-social/ted-512.png'); background-color: #FF2B06;} 
+.jpcs-social.trakt {background-image: url('../img/jpcs-social/trakt-512.png'); background-color: #222222;} 
+.jpcs-social.treehouse {background-image: url('../img/jpcs-social/treehouse-512.png'); background-color: #7FA24C;} 
+.jpcs-social.tripadvisor {background-image: url('../img/jpcs-social/tripadvisor-1024.png'); background-color: #589442;} 
+.jpcs-social.tumblr {background-image: url('../img/jpcs-social/tumblr-512.png'); background-color: #32506D;} 
+.jpcs-social.twitter {background-image: url('../img/jpcs-social/twitter-512.png'); background-color: #2C4762; background-color: #00ACED;} 
+.jpcs-social.vimeo {background-image: url('../img/jpcs-social/vimeo-512.png'); background-color: #44BBFF;} 
+.jpcs-social.vine {background-image: url('../img/jpcs-social/vine-512.png'); background-color: #00A47A;} 
+.jpcs-social.wikipedia {background-image: url('../img/jpcs-social/wikipedia-512.png'); background-color: #000000;} 
+.jpcs-social.windows {background-image: url('../img/jpcs-social/windows-512.png'); background-color: #00BDF6;} 
+.jpcs-social.wordpress {background-image: url('../img/jpcs-social/wordpress-512.png'); background-color: #21759B;} 
+.jpcs-social.yahoo {background-image: url('../img/jpcs-social/yahoo-512.png'); background-color: #731A8B;} 
+.jpcs-social.yelp {background-image: url('../img/jpcs-social/yelp-512.png'); background-color: #C93C27;} 
+.jpcs-social.youtube {background-image: url('../img/jpcs-social/youtube-512.png'); background-color: #CD332D;} 
+
+
+/* HOVER */
+.jpcs-social.aboutme:hover {background-image: url('../img/jpcs-social/aboutme-512-black.png');} 
+.jpcs-social.amazon:hover {background-image: url('../img/jpcs-social/amazon-512-black.png');} 
+.jpcs-social.android:hover {background-image: url('../img/jpcs-social/android-512-black.png');} 
+.jpcs-social.appdotnet:hover {background-image: url('../img/jpcs-social/appdotnet-512-black.png');} 
+.jpcs-social.apple:hover {background-image: url('../img/jpcs-social/apple-512-black.png');} 
+.jpcs-social.audioboo:hover {background-image: url('../img/jpcs-social/audioboo-512-black.png');} 
+.jpcs-social.aws:hover {background-image: url('../img/jpcs-social/aws-512-black.png');} 
+.jpcs-social.bebo:hover {background-image: url('../img/jpcs-social/bebo-512-black.png');} 
+.jpcs-social.behance:hover {background-image: url('../img/jpcs-social/behance-512-black.png');} 
+.jpcs-social.bitbucket:hover {background-image: url('../img/jpcs-social/bitbucket-512-black.png');} 
+.jpcs-social.blip:hover {background-image: url('../img/jpcs-social/blip-512-black.png');} 
+.jpcs-social.blogger:hover {background-image: url('../img/jpcs-social/blogger-512-black.png');} 
+.jpcs-social.bootstrap:hover {background-image: url('../img/jpcs-social/bootstrap-512-black.png');} 
+.jpcs-social.css3:hover {background-image: url('../img/jpcs-social/css3-512-black.png');} 
+.jpcs-social.delicious:hover {background-image: url('../img/jpcs-social/delicious-512-black.png');} 
+.jpcs-social.deviantart:hover {background-image: url('../img/jpcs-social/deviantart-512-black.png');} 
+.jpcs-social.digg:hover {background-image: url('../img/jpcs-social/digg-512-black.png');} 
+.jpcs-social.disqus:hover {background-image: url('../img/jpcs-social/disqus-512-black.png');} 
+.jpcs-social.dribbble:hover {background-image: url('../img/jpcs-social/dribbble-512-black.png');} 
+.jpcs-social.dropbox:hover {background-image: url('../img/jpcs-social/dropbox-1024-black.png');} 
+.jpcs-social.drupal:hover {background-image: url('../img/jpcs-social/drupal-512-black.png');} 
+.jpcs-social.ebay:hover {background-image: url('../img/jpcs-social/ebay-512-black.png');} 
+.jpcs-social.email:hover {background-image: url('../img/jpcs-social/email-512-black.png');} 
+.jpcs-social.eventbrite:hover {background-image: url('../img/jpcs-social/eventbrite-512-black.png');} 
+.jpcs-social.evernote:hover {background-image: url('../img/jpcs-social/evernote-512-black.png');} 
+.jpcs-social.facebook:hover {background-image: url('../img/jpcs-social/facebook-512-black.png');} 
+.jpcs-social.fivehundredpx:hover {background-image: url('../img/jpcs-social/500px-512-black.png');} 
+.jpcs-social.flattr:hover {background-image: url('../img/jpcs-social/flattr-512-black.png');} 
+.jpcs-social.flickr:hover {background-image: url('../img/jpcs-social/flickr-512-black.png');} 
+.jpcs-social.formspring:hover {background-image: url('../img/jpcs-social/formspring-512-black.png');} 
+.jpcs-social.forrst:hover {background-image: url('../img/jpcs-social/forrst-512-black.png');} 
+.jpcs-social.foursquare:hover {background-image: url('../img/jpcs-social/foursquare-512-black.png');} 
+.jpcs-social.geeklist:hover {background-image: url('../img/jpcs-social/geeklist-512-black.png');} 
+.jpcs-social.github:hover {background-image: url('../img/jpcs-social/github-512-black.png');} 
+.jpcs-social.goodreads:hover {background-image: url('../img/jpcs-social/goodreads-512-black.png');} 
+.jpcs-social.google:hover {background-image: url('../img/jpcs-social/google-512-black.png');} 
+.jpcs-social.googleplus:hover {background-image: url('../img/jpcs-social/googleplus-512-black.png');} 
+.jpcs-social.grooveshark:hover {background-image: url('../img/jpcs-social/grooveshark-512-black.png');} 
+.jpcs-social.hackernews:hover {background-image: url('../img/jpcs-social/hackernews-512-black.png');} 
+.jpcs-social.heroku:hover {background-image: url('../img/jpcs-social/heroku-512-black.png');} 
+.jpcs-social.html5:hover {background-image: url('../img/jpcs-social/html5-512-black.png');} 
+.jpcs-social.imdb:hover {background-image: url('../img/jpcs-social/imdb-512-black.png');} 
+.jpcs-social.instagram:hover {background-image: url('../img/jpcs-social/instagram-512-black.png');} 
+.jpcs-social.jquery:hover {background-image: url('../img/jpcs-social/jquery-512-black.png');} 
+.jpcs-social.jsfiddle:hover {background-image: url('../img/jpcs-social/jsfiddle-512-black.png');} 
+.jpcs-social.justgiving:hover {background-image: url('../img/jpcs-social/justgiving-512-black.png');} 
+.jpcs-social.khanacademy:hover {background-image: url('../img/jpcs-social/khanacademy-512-black.png');} 
+.jpcs-social.kickstarter:hover {background-image: url('../img/jpcs-social/kickstarter-512-black.png');} 
+.jpcs-social.klout:hover {background-image: url('../img/jpcs-social/klout-512-black.png');} 
+.jpcs-social.lastfm:hover {background-image: url('../img/jpcs-social/lastfm-512-black.png');} 
+.jpcs-social.layervault:hover {background-image: url('../img/jpcs-social/layervault-512-black.png');} 
+.jpcs-social.letterboxd:hover {background-image: url('../img/jpcs-social/letterboxd-512-black.png');} 
+.jpcs-social.linkedin:hover {background-image: url('../img/jpcs-social/linkedin-512-black.png');} 
+.jpcs-social.mediatemple:hover {background-image: url('../img/jpcs-social/mediatemple-512-black.png');} 
+.jpcs-social.myspace:hover {background-image: url('../img/jpcs-social/myspace-512-black.png');} 
+.jpcs-social.mysql:hover {background-image: url('../img/jpcs-social/mysql-512-black.png');} 
+.jpcs-social.orkut:hover {background-image: url('../img/jpcs-social/orkut-512-black.png');} 
+.jpcs-social.path:hover {background-image: url('../img/jpcs-social/path-512-black.png');} 
+.jpcs-social.picasa:hover {background-image: url('../img/jpcs-social/picasa-512-black.png');} 
+.jpcs-social.pinterest:hover {background-image: url('../img/jpcs-social/pinterest-512-black.png');} 
+.jpcs-social.pocket:hover {background-image: url('../img/jpcs-social/pocket-512-black.png');} 
+.jpcs-social.posterous:hover {background-image: url('../img/jpcs-social/posterous-512-black.png');} 
+.jpcs-social.protoio:hover {background-image: url('../img/jpcs-social/protoio-512-black.png');} 
+.jpcs-social.quora:hover {background-image: url('../img/jpcs-social/quora-512-black.png');} 
+.jpcs-social.rails:hover {background-image: url('../img/jpcs-social/rails-512-black.png');} 
+.jpcs-social.rdio:hover {background-image: url('../img/jpcs-social/rdio-512-black.png');} 
+.jpcs-social.readability:hover {background-image: url('../img/jpcs-social/readability-512-black.png');} 
+.jpcs-social.reddit:hover {background-image: url('../img/jpcs-social/reddit-512-black.png');} 
+.jpcs-social.rss:hover {background-image: url('../img/jpcs-social/rss-512-black.png');} 
+.jpcs-social.skydrive:hover {background-image: url('../img/jpcs-social/skydrive-512-black.png');} 
+.jpcs-social.skype:hover {background-image: url('../img/jpcs-social/skype-512-black.png');} 
+.jpcs-social.slideshare:hover {background-image: url('../img/jpcs-social/slideshare-512-black.png');} 
+.jpcs-social.soundcloud:hover {background-image: url('../img/jpcs-social/soundcloud-512-black.png');} 
+.jpcs-social.spotify:hover {background-image: url('../img/jpcs-social/spotify-512-black.png');} 
+.jpcs-social.squarespace:hover {background-image: url('../img/jpcs-social/squarespace-512-black.png');} 
+.jpcs-social.stackexchange:hover {background-image: url('../img/jpcs-social/stackexchange-512-black.png');} 
+.jpcs-social.stackoverflow:hover {background-image: url('../img/jpcs-social/stackoverflow-512-black.png');} 
+.jpcs-social.stumbleupon:hover {background-image: url('../img/jpcs-social/stumbleupon-512-black.png');} 
+.jpcs-social.superuser:hover {background-image: url('../img/jpcs-social/superuser-512-black.png');} 
+.jpcs-social.ted:hover {background-image: url('../img/jpcs-social/ted-512-black.png');} 
+.jpcs-social.trakt:hover {background-image: url('../img/jpcs-social/trakt-512-black.png');} 
+.jpcs-social.treehouse:hover {background-image: url('../img/jpcs-social/treehouse-512-black.png');} 
+.jpcs-social.tripadvisor:hover {background-image: url('../img/jpcs-social/tripadvisor-1024-black.png');} 
+.jpcs-social.tumblr:hover {background-image: url('../img/jpcs-social/tumblr-512-black.png');} 
+.jpcs-social.twitter:hover {background-image: url('../img/jpcs-social/twitter-512-black.png');} 
+.jpcs-social.vimeo:hover {background-image: url('../img/jpcs-social/vimeo-512-black.png');} 
+.jpcs-social.vine:hover {background-image: url('../img/jpcs-social/vine-512-black.png');} 
+.jpcs-social.wikipedia:hover {background-image: url('../img/jpcs-social/wikipedia-512-black.png');} 
+.jpcs-social.windows:hover {background-image: url('../img/jpcs-social/windows-512-black.png');} 
+.jpcs-social.wordpress:hover {background-image: url('../img/jpcs-social/wordpress-512-black.png');} 
+.jpcs-social.yahoo:hover {background-image: url('../img/jpcs-social/yahoo-512-black.png');} 
+.jpcs-social.yelp:hover {background-image: url('../img/jpcs-social/yelp-512-black.png');} 
+.jpcs-social.youtube:hover {background-image: url('../img/jpcs-social/youtube-512-black.png');} 
+
