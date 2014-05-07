@@ -14,9 +14,14 @@
 			})();
 		</script>
 
+		<script type="text/javascript" src="//use.typekit.net/dbv8chl.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/jpcs-social.css" />
+		<link rel="stylesheet" type="text/css" href="css/shorts.css" />
 
 		
 	</head>
@@ -30,6 +35,7 @@
 				<div class="col-md-12"><h3>Coming Soon!</h3></div>
 			</div>
 		</div>
+
 
 
 
