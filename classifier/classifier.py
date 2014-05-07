@@ -1,16 +1,23 @@
 import numpy as np
 import time, sys, argparse, random
 from collections import Counter
+import _mysql
 
 
 # build a dictionary of vectors and classes
-def build_vectors(file):
+def build_vectors():
+	db = _mysql.connect(host='127.0.0.1', user='root', passwd='root', db='shorts')
+	print db
+	db.query("SELECT * FROM learning")
+	res = db.store_result()
+
 	i = []
-	next(file)		# skip the header line
-	for line in file:
-		i.append({'values': np.array(map(float,line.split(",")[0:-1])), 'class': line.split(",")[-1].strip()})
+	for line in res.fetch_row(maxrows=0):
+		line = list(line)
+		i.append({'values': np.array(map(float,line[2:-2])), 'class': 'class'+line[-1].strip()})
 	print "Instances Loaded: " + str(len(i));
 	random.shuffle(i)	# shuffle the results 
+	print i
 	return i
 	
 # given two attribute lists, find the euclidean distance, wraps numPy function
@@ -106,7 +113,7 @@ def NB(ktest, ktrain):
 			p = out_vector[c]['p']
 			for i in range(len(out_vector[c]['data'])):
 				p *= normal_pdf(out_vector[c][str(i)+'_avg'], out_vector[c][str(i)+'_var'], curr['values'][i])
-			print p, pr
+			# print p, pr
 			if p > pr:
 				pr = p
 				cl = c
@@ -124,7 +131,6 @@ def main():
 	parser.add_argument("--folds", "-f", help="number of instances you want to test, the remaining instances will be used as a training set.", type=int, default=10)
 	parser.add_argument("--neighbours", "-k", help="number of nearest neighbours", type=int, default=3)
 	parser.add_argument("--algorithm", "-a", help="the algorithm to run (KNN/NB)", default="NB")
-	parser.add_argument("--input", "-i", help="the .csv file you want to run the algorithm with", default="pima.csv")
 	args = parser.parse_args()
 		
 	num_test = args.folds 
@@ -145,8 +151,8 @@ def main():
 		exit()
 
 	# read in the file and build a data structure to store values and classes
-	print "Using " + args.input
-	instances = build_vectors(open(args.input, "rU"))
+
+	instances = build_vectors()
 	
 	if (num_test > len(instances)):		# make sure we don't have to many test instances
 		out(f, "Not enough data to fill folds, exiting...")
@@ -172,16 +178,6 @@ def main():
 				break
 
 	correct_percentages = [];
-
-	#print folds to pima-folds.csv
-	ff = open('pima-folds.csv', 'w')
-	for i in range(len(chunks)):
-		ff.write('fold'+str(i+1)+"\n")
-		for j in chunks[i]:
-			for k in j['values']:
-				ff.write(str(k)+',')
-			ff.write(j['class'] + '\n')
-		ff.write('\n')
 
 
 	for i in range(len(chunks)):
