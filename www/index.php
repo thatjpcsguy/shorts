@@ -2,6 +2,8 @@
 
 <html>
 	<head>
+		<title>Shorts Today?</title>
+
 		<script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', '<?php echo GA_ACCOUNT; ?>']);
@@ -29,7 +31,7 @@
 	</head>
 	<body>
 		<!-- <div class="container"> -->
-		
+
 			<div class="row">
 				<div class="col-md-12" id="prediction-container"><h1>Can i wear shorts today?</h1></div>
 			</div>
