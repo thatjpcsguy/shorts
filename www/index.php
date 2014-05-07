@@ -17,6 +17,8 @@
 		<script type="text/javascript" src="//use.typekit.net/dbv8chl.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
+		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>		
+		<script type="text/javascript" src="/js/shorts.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
