@@ -21,7 +21,15 @@
 		
 	</head>
 	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12"><h1>Can i wear shorts today?</h1></div>
+			</div>
 
+			<div class="row">
+				<div class="col-md-12"><h3>Coming Soon!</h3></div>
+			</div>
+		</div>
 
 
 
