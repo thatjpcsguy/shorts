@@ -43,6 +43,11 @@ You may also need to install bower
 npm install -g bower
 ```
 
+and compass (to compile sass)
+```
+gem update --system && gem install compass
+```
+
 ## Installing Packages
 
 Using the dependencies listed in the current `bower.json`
