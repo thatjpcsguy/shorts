@@ -30,6 +30,19 @@ $ grunt serve
 
 This should start the development server and the web page should open.
 
+If this doesnt work, try
+
+```
+$ npm install
+```
+
+which will install all your node dependencies.
+
+You may also need to install bower
+```
+npm install -g bower
+```
+
 ## Installing Packages
 
 Using the dependencies listed in the current `bower.json`
