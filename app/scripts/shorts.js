@@ -7,9 +7,9 @@ $(document).ready(function() {
 
     function getPrediction(latitude, longitude)
     {
-        $.get('http://localhost:3000/weather/'+latitude+'/'+longitude+'/', function(data) {
+        $.get('http://shorts.today:3000/weather/'+latitude+'/'+longitude+'/', function(data) {
             $('.spinner').remove();
-            $('#temp-container').html('<h4>'+data.events+' '+data.max_temp + '&deg;c</h4>');
+            $('#temp-container').html('<h4>'+data.events+'. '+Math.ceil(data.max_temp) + '&deg;c</h4>');
             if (data.class === 1)
             {
                 $('#prediction-container').html('<h1>Shorts are a go!</h1>');

@@ -9,7 +9,7 @@ var app = express();
 var cors = require('cors');
 
 var corsOptions = {
-  origin: 'http://127.0.0.1:9000'
+  origin: 'http://shorts.today'
 };
 
 _classifierLearn();
