@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+    console.log('We have liftoff!');
+
     function showPosition(position) {
 
         getPrediction(position.coords.latitude, position.coords.longitude)
