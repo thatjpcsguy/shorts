@@ -5,7 +5,7 @@ $(document).ready(function() {
 
         $.get('http://localhost:3000/weather/'+position.coords.latitude+'/'+position.coords.longitude+'/', function(data) {
             $('.spinner').remove();
-            $('#temp-container').html('<h4>' + data.max_temp + ' degrees celcius </h4>');
+            $('#temp-container').html('<h4>Temp: ' + data.max_temp + '&deg;c </h4>');
             if (data.class == 1)
                 $('#prediction-container').html('<h1>Shorts are a go!</h1>');
             else
