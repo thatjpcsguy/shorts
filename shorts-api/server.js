@@ -17,7 +17,7 @@ _classifierLearn();
 app.set('title', 'Shorts?');
 app.get('/weather/:lat/:lon', cors(corsOptions), function(req, res){
 
-    request("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + req.params.lat + "&lon=" + req.params.lon + "&mode=json", function(error, response, body) {
+    request("http://api.openweathermap.org/data/2.5/forecast/daily?cnt=1&units=metric&lat=" + req.params.lat + "&lon=" + req.params.lon + "&mode=json", function(error, response, body) {
         if (!error && response.statusCode == 200) {
             var data = JSON.parse(body);
             var r = buildWeather(data.list[0]);
@@ -41,8 +41,8 @@ function buildWeather(data) {
     // console.log('BUILDING WEATHER FROM DATA:');
     // console.log(data);
     var obj = {
-        max_temp: _kelvinToCelcius(data.temp.max),
-        min_temp: _kelvinToCelcius(data.temp.min),
+        max_temp: data.temp.max,
+        min_temp: data.temp.min,
         humidity: data.humidity,
         precipitation: data.rain,
         wind: data.speed,
