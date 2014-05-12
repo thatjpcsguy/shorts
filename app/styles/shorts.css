@@ -2,11 +2,19 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: "brandon-grotesque";
 
 }
+h1 {
+	font-size: 8em;
+}
+h4 {
+	font-size: 4em;
+}
+
 body {
 	background-color: #d35400;
 	padding-left: 30px;
 	font-family: "brandon-grotesque";
 	font-weight: "light";
+	color: white;
 }
 
 .spinner {
@@ -17,7 +25,7 @@ body {
 }
 
 .cube1, .cube2 {
-  background-color: #333;
+  background-color: white;
   width: 10px;
   height: 10px;
   position: absolute;
