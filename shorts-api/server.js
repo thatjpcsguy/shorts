@@ -19,8 +19,8 @@ var server = http.createServer(function(req, res) {
     }
 });
 
-server.listen(8124, "127.0.0.1");
-console.log('Server running at http://127.0.0.1:8124/');
+server.listen(1337, "127.0.0.1");
+console.log('Server running at http://127.0.0.1:1337/');
 
 function getWeather(lat, lon, res) {
     request("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&mode=json", function(error, response, body) {
