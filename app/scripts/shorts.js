@@ -23,6 +23,7 @@ $(document).ready(function() {
 
     function geoIP()
     {
+        console.log('geoip');
         $.get('http://freegeoip.net/json/', function(data)
         {
             getPrediction(data.latitude, data.longitude);
