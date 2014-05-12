@@ -1,17 +1,32 @@
 $(document).ready(function() {
     function showPosition(position) {
-        console.log('lat: ' + position.coords.latitude);
-        console.log('lon: ' + position.coords.longitude);
 
-        $.get('http://localhost:3000/weather/'+position.coords.latitude+'/'+position.coords.longitude+'/', function(data) {
+        getPrediction(position.coords.latitude, position.coords.longitude)
+        
+    }
+
+    function getPrediction(latitude, longitude)
+    {
+        $.get('http://localhost:3000/weather/'+latitude+'/'+longitude+'/', function(data) {
             $('.spinner').remove();
-            $('#temp-container').html('<h4>' + data.max_temp + '&deg;c - '+data.events+'</h4>');
-            if (data.class == 1)
+            $('#temp-container').html('<h4>'+data.events+' '+data.max_temp + '&deg;c</h4>');
+            if (data.class === 1)
+            {
                 $('#prediction-container').html('<h1>Shorts are a go!</h1>');
+            }
             else
-                $('#prediction-container').html('<h1>I Wouldn\'t reccomend shorts today!</h1>');
+            {
+                $('#prediction-container').html('<h1>I wouldn\'t reccomend shorts today!</h1>');
+            }
         });
+    }
 
+    function geoIP()
+    {
+        $.get('http://freegeoip.net/json/', function(data)
+        {
+            getPrediction(data.latitude, data.longitude);
+        });
     }
 
 
@@ -30,7 +45,7 @@ $(document).ready(function() {
                 console.log('An unknown error occurred.');
                 break;
         }
-        // fall back to geo ip
+        geoIP();
     }
 
     if (navigator.geolocation) {
@@ -38,6 +53,7 @@ $(document).ready(function() {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
         console.log('HTML Location Not Supported.');
+        geoIP();
     }
 
 });
