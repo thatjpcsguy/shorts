@@ -30,7 +30,8 @@
     "load-grunt-tasks": "~0.2.0",
     "time-grunt": "~0.2.0",
     "jshint-stylish": "~0.1.3",
-    "grunt-php": "~0.3.3"
+    "grunt-php": "~0.3.3",
+    "grunt-bower-task": "^0.3.4"
   },
   "engines": {
     "node": ">=0.8.0"

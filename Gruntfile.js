@@ -16,6 +16,8 @@ var mountFolder = function(connect, dir) {
 
 module.exports = function(grunt) {
 
+    grunt.loadNpmTasks('grunt-bower-task');
+
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
 
@@ -206,6 +208,12 @@ module.exports = function(grunt) {
                 ignorePath: '<%= yeoman.app %>/'
             }
         },
+
+	bower: {
+	    install: {
+	    
+	    }
+	},
 
         // Renames files for browser caching purposes
         rev: {
