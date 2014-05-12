@@ -4,26 +4,20 @@ var url = require('url');
 var request = require("request");
 var bayes = require('bayes');
 var classifier = bayes();
+var express = require('express');
+var app = express();
+var cors = require('cors');
 
-var server = http.createServer(function(req, res) {
-    var up = url.parse(req.url, true);
-    var query = up.query;
-    _classifierLearn(); // Set up the classifier
+var corsOptions = {
+  origin: 'http://127.0.0.1:9000'
+};
 
-    if (up.pathname == '/weather') { // Getting weather, delegate to function
-        if (query.latitude && query.longitude) {
-            getWeather(query.latitude, query.longitude, res);
-        } else {
-            // HANDLE THE ERROR
-        }
-    }
-});
+_classifierLearn();
 
-server.listen(1337, "127.0.0.1");
-console.log('Server running at http://127.0.0.1:1337/');
+app.set('title', 'Shorts?');
+app.get('/weather/:lat/:lon', cors(corsOptions), function(req, res){
 
-function getWeather(lat, lon, res) {
-    request("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&mode=json", function(error, response, body) {
+    request("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + req.params.lat + "&lon=" + req.params.lon + "&mode=json", function(error, response, body) {
         if (!error && response.statusCode == 200) {
             var data = JSON.parse(body);
             var r = buildWeather(data.list[0]);
@@ -33,8 +27,15 @@ function getWeather(lat, lon, res) {
         } else {
             // HANDLE THE ERROR
         }
-    })
-}
+    });
+
+});
+
+
+var server = app.listen(3000, function() {
+    console.log('Listening on port %d', server.address().port);
+});
+
 
 function buildWeather(data) {
     // console.log('BUILDING WEATHER FROM DATA:');

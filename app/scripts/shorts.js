@@ -3,27 +3,17 @@ $(document).ready(function() {
         console.log('lat: ' + position.coords.latitude);
         console.log('lon: ' + position.coords.longitude);
 
-        $.get('/ajax/classify.php', {
-            lat: position.coords.latitude,
-            lon: position.coords.longitude
-        }, function(data) {
-            console.log(data.res);
-
-            $('#weather-container').html('<h4>' + kelvinToCelcius(data.res.list[0].temp.day) + ' degrees celcius </h4>');
-            $('#prediction-container').html('<h1>' + data.prediction + '</h1>');
-            $('#location-container').html('<h4>' + data.location + '</h4>');
-
+        $.get('http://localhost:3000/weather/'+position.coords.latitude+'/'+position.coords.longitude+'/', function(data) {
+            $('.spinner').remove();
+            $('#temp-container').html('<h4>' + data.max_temp + ' degrees celcius </h4>');
+            if (data.class == 1)
+                $('#prediction-container').html('<h1>Shorts are a go!</h1>');
+            else
+                $('#prediction-container').html('<h1>I Wouldn\'t reccomend shorts today!</h1>');
         });
 
     }
 
-    function kelvinToCelcius(temp) {
-        return parseInt(temp - 273.15);
-    }
-
-    function kelvinToFahrenheit(temp) {
-        return parseInt(9 / 5 * (temp - 273) + 32);
-    }
 
     function showError(error) {
         switch (error.code) {
