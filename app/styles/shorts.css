@@ -1,5 +1,5 @@
 h1, h2, h3, h4, h5, h6 {
-    font-family: "brandon-grotesque";
+    font-family:"brandon-grotesque";
 }
 h1 {
     font-size: 3em;
@@ -8,26 +8,22 @@ h4 {
     font-size: 1.5em;
     margin-top: 20px;
 }
-
 body {
-    background-color: #d35400;
-    font-family: "brandon-grotesque";
-    font-weight: "light";
+    /*background-color: #d35400;*/
+    background-color: #3D67CC;
+    font-family:"brandon-grotesque";
+    font-weight:"light";
     color: white;
     padding: 0px;
     margin: 0px;
 }
-
 a {
     color: white;
 }
-
 #made-container, #prediction-container, #temp-container {
     padding-left: 30px;
     padding-right: 30px;
 }
-
-
 .loading {
     left: 50%;
     margin-left: -92px;
@@ -36,7 +32,6 @@ a {
     top: 300px;
     position: absolute;
 }
-
 .spinner {
     left: 50%;
     margin-left: -92px;
@@ -45,7 +40,40 @@ a {
     top: 100px;
     position: absolute;
 }
-
+.double-bounce1, .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: bounce 2.0s infinite ease-in-out;
+    animation: bounce 2.0s infinite ease-in-out;
+}
+.double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+@-webkit-keyframes bounce {
+    0%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+    50% {
+        -webkit-transform: scale(1.0)
+    }
+}
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
 .cube1, .cube2 {
     background-color: white;
     width: 42px;
@@ -53,37 +81,45 @@ a {
     position: absolute;
     top: 0;
     left: 0;
-
     -webkit-animation: cubemove 1.8s infinite ease-in-out;
     animation: cubemove 1.8s infinite ease-in-out;
 }
-
 .cube2 {
     -webkit-animation-delay: -0.9s;
     animation-delay: -0.9s;
 }
-
 @-webkit-keyframes cubemove {
-    25% { -webkit-transform: translateX(142px) rotate(-90deg) scale(0.5) }
-    50% { -webkit-transform: translateX(142px) translateY(142px) rotate(-180deg) }
-    75% { -webkit-transform: translateX(0px) translateY(142px) rotate(-270deg) scale(0.5) }
-    100% { -webkit-transform: rotate(-360deg) }
+    25% {
+        -webkit-transform: translateX(142px) rotate(-90deg) scale(0.5)
+    }
+    50% {
+        -webkit-transform: translateX(142px) translateY(142px) rotate(-180deg)
+    }
+    75% {
+        -webkit-transform: translateX(0px) translateY(142px) rotate(-270deg) scale(0.5)
+    }
+    100% {
+        -webkit-transform: rotate(-360deg)
+    }
 }
-
 @keyframes cubemove {
     25% {
         transform: translateX(142px) rotate(-90deg) scale(0.5);
         -webkit-transform: translateX(142px) rotate(-90deg) scale(0.5);
-    } 50% {
+    }
+    50% {
         transform: translateX(142px) translateY(142px) rotate(-179deg);
         -webkit-transform: translateX(142px) translateY(142px) rotate(-179deg);
-    } 50.1% {
+    }
+    50.1% {
         transform: translateX(142px) translateY(142px) rotate(-180deg);
         -webkit-transform: translateX(142px) translateY(142px) rotate(-180deg);
-    } 75% {
+    }
+    75% {
         transform: translateX(0px) translateY(142px) rotate(-270deg) scale(0.5);
         -webkit-transform: translateX(0px) translateY(142px) rotate(-270deg) scale(0.5);
-    } 100% {
+    }
+    100% {
         transform: rotate(-360deg);
         -webkit-transform: rotate(-360deg);
     }

@@ -5,7 +5,7 @@ $(document).ready(function() {
     function showPosition(position) {
 
         getPrediction(position.coords.latitude, position.coords.longitude)
-        
+
     }
 
     function getPrediction(latitude, longitude)
