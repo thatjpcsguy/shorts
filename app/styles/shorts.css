@@ -27,6 +27,16 @@ a {
     padding-right: 30px;
 }
 
+
+.loading {
+    left: 50%;
+    margin-left: -92px;
+    width: 184px;
+    height: 184px;
+    top: 300px;
+    position: absolute;
+}
+
 .spinner {
     left: 50%;
     margin-left: -92px;

@@ -12,6 +12,7 @@ $(document).ready(function() {
     {
         $.get('http://shorts.today:3000/weather/'+latitude+'/'+longitude+'/', function(data) {
             $('.spinner').remove();
+             $('.loading').remove();
             $('#temp-container').html('<h4>'+data.events+'. '+Math.ceil(data.max_temp) + '&deg;c</h4>');
             if (data.class === 1)
             {
