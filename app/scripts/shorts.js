@@ -21,6 +21,7 @@ $(document).ready(function() {
             {
                 $('#prediction-container').html('<h1>I wouldn\'t reccomend shorts today!</h1>');
             }
+            $('#made-container').html('<br /><br /><p>Made by <a href="http://twitter.com/rheotron">@rheotron</a> and <a href="http://twitter.com/thatjpcsguy">@thatjpcsguy</a>. Source code available on <a href="http://github.com/thatjpcsguy/shorts">github</a>.');
         });
     }
 
