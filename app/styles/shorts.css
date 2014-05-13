@@ -12,8 +12,6 @@ h4 {
 
 body {
 	background-color: #d35400;
-	padding-left: 30px;
-	padding-right: 30px;
 	font-family: "brandon-grotesque";
 	font-weight: "light";
 	color: white;
@@ -21,6 +19,11 @@ body {
 
 a {
   color: white;
+}
+
+#made-container, #prediction-container, #temp-container {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .spinner {
