@@ -10,7 +10,7 @@ h4 {
 }
 
 body {
-    background-color: #d35400;
+    /*background-color: #d35400;*/
     font-family: "brandon-grotesque";
     font-weight: "light";
     color: white;
@@ -29,7 +29,7 @@ a {
 
 .spinner {
     left: 50%;
-    margin-left: -92px; 
+    margin-left: -92px;
     width: 184px;
     height: 184px;
     top: 100px;
@@ -61,19 +61,19 @@ a {
 }
 
 @keyframes cubemove {
-    25% { 
+    25% {
         transform: translateX(142px) rotate(-90deg) scale(0.5);
         -webkit-transform: translateX(142px) rotate(-90deg) scale(0.5);
-    } 50% { 
+    } 50% {
         transform: translateX(142px) translateY(142px) rotate(-179deg);
         -webkit-transform: translateX(142px) translateY(142px) rotate(-179deg);
-    } 50.1% { 
+    } 50.1% {
         transform: translateX(142px) translateY(142px) rotate(-180deg);
         -webkit-transform: translateX(142px) translateY(142px) rotate(-180deg);
-    } 75% { 
+    } 75% {
         transform: translateX(0px) translateY(142px) rotate(-270deg) scale(0.5);
         -webkit-transform: translateX(0px) translateY(142px) rotate(-270deg) scale(0.5);
-    } 100% { 
+    } 100% {
         transform: rotate(-360deg);
         -webkit-transform: rotate(-360deg);
     }

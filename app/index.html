@@ -23,13 +23,17 @@
     <script src="scripts/shorts.js"></script>
     <script src="scripts/shards.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('body').shards([0,0,0,.5],[255,0,0,.2],[255,255,0,.1],10,2,2,.1,true);
-        });
+    $(document).ready(function() {
+        $('body').shards([10, 35, 180, .25], [255, 20, 220, .25], [0, 0, 0, .25], 20, .8, 2, .15, true);
+    });
     </script>
 
     <script type="text/javascript" src="//use.typekit.net/dbv8chl.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript">
+    try {
+        Typekit.load();
+    } catch (e) {}
+    </script>
 
 </head>
 
@@ -38,7 +42,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-  
+
     <div id="prediction-container">
     </div>
 
@@ -54,16 +58,22 @@
     </div>
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-50898206-1', 'shorts.today');
-  ga('send', 'pageview');
-
-</script>
+    ga('create', 'UA-50898206-1', 'shorts.today');
+    ga('send', 'pageview');
+    </script>
 
 </body>
 
