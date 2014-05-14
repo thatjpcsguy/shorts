@@ -13,8 +13,6 @@ var corsOptions = {
   origin: 'http://shorts.today'
 };
 
-_classifierLearn();
-
 var items = [
     { max_temp: 27, min_temp: 21, mean_temp: 24, max_humidity: 88, min_humidity: 48, mean_humidity: 74, max_wind: 34, mean_wind: 24, precipitation: 0, cloud_cover: 3, events: '', class: 1},
     { max_temp: 29, min_temp: 22, mean_temp: 26, max_humidity: 83, min_humidity: 33, mean_humidity: 61, max_wind: 40, mean_wind: 23, precipitation: 0, cloud_cover: 2, events: '', class: 1},
@@ -137,8 +135,8 @@ app.get('/weather/:lat/:lon', cors(corsOptions), function(req, res){
                             mean_humidity: data.list[0].humidity,
                             precipitation: data.list[0].rain,
                             mean_wind: data.list[0].speed,
-                            cloud_cover: data.clouds,
-                            events: data.weather[0].main
+                            cloud_cover: data.list[0].clouds,
+                            events: data.list[0].weather[0].main
                              };
 
 
