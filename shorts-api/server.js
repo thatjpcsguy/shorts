@@ -125,24 +125,32 @@ app.get('/weather/:lat/:lon', cors(corsOptions), function(req, res){
         if (!error && response.statusCode == 200) {
             var data = JSON.parse(body);
 
-            console.log();
 
             var query = {   max_temp: data.list[0].temp.max, 
                             min_temp: data.list[0].temp.min, 
                             mean_humidity: data.list[0].humidity,
-                            precipitation: data.list[0].rain,
                             mean_wind: data.list[0].speed,
                             cloud_cover: data.list[0].clouds,
                             events: data.list[0].weather[0].main,
 			    class: 0
                              };
 
+                if ( data.list[0].rain)
+                {
+                    query.precipitation = data.list[0].rain;
+                }
+                else {
+                    query.precipitation = 0;
+                }
+
+
 
             nn.findMostSimilar(query, items, fields, function(nearestNeighbor, probability) {
               console.log(query);
               console.log(nearestNeighbor);
               console.log(probability);
-//              query.class = nearestNeighbor.class;
+             query.pred_class = nearestNeighbor.class;
+             query.prob = probability;
             });
 
 
