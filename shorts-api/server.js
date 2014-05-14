@@ -7,6 +7,7 @@ var classifier = bayes();
 var express = require('express');
 var app = express();
 var cors = require('cors');
+var nn = require('nearest-neighbor');
 
 var corsOptions = {
   origin: 'http://shorts.today'
@@ -14,16 +15,143 @@ var corsOptions = {
 
 _classifierLearn();
 
+var items = [
+    { max_temp: 27, min_temp: 21, mean_temp: 24, max_humidity: 88, min_humidity: 48, mean_humidity: 74, max_wind: 34, mean_wind: 24, precipitation: 0, cloud_cover: 3, events: '', class: 1},
+    { max_temp: 29, min_temp: 22, mean_temp: 26, max_humidity: 83, min_humidity: 33, mean_humidity: 61, max_wind: 40, mean_wind: 23, precipitation: 0, cloud_cover: 2, events: '', class: 1},
+    { max_temp: 29, min_temp: 22, mean_temp: 26, max_humidity: 73, min_humidity: 21, mean_humidity: 54, max_wind: 50, mean_wind: 29, precipitation: 0, cloud_cover: 1, events: '', class: 1},
+    { max_temp: 25, min_temp: 19, mean_temp: 22, max_humidity: 94, min_humidity: 39, mean_humidity: 74, max_wind: 50, mean_wind: 27, precipitation: 1, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 22, min_temp: 18, mean_temp: 20, max_humidity: 64, min_humidity: 33, mean_humidity: 51, max_wind: 37, mean_wind: 27, precipitation: 0, cloud_cover: 6, events: '', class: 1},
+    { max_temp: 23, min_temp: 17, mean_temp: 20, max_humidity: 77, min_humidity: 34, mean_humidity: 59, max_wind: 26, mean_wind: 14, precipitation: 0, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 27, min_temp: 16, mean_temp: 21, max_humidity: 77, min_humidity: 31, mean_humidity: 55, max_wind: 37, mean_wind: 14, precipitation: 0, cloud_cover: 2, events: '', class: 1},
+    { max_temp: 30, min_temp: 19, mean_temp: 24, max_humidity: 78, min_humidity: 25, mean_humidity: 56, max_wind: 42, mean_wind: 21, precipitation: 0, cloud_cover: 1, events: '', class: 1},
+    { max_temp: 30, min_temp: 21, mean_temp: 26, max_humidity: 88, min_humidity: 30, mean_humidity: 61, max_wind: 42, mean_wind: 24, precipitation: 0, cloud_cover: 2, events: '', class: 1},
+    { max_temp: 23, min_temp: 20, mean_temp: 22, max_humidity: 94, min_humidity: 61, mean_humidity: 78, max_wind: 53, mean_wind: 27, precipitation: 0, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 25, min_temp: 20, mean_temp: 22, max_humidity: 94, min_humidity: 60, mean_humidity: 78, max_wind: 27, mean_wind: 19, precipitation: 0, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 27, min_temp: 21, mean_temp: 24, max_humidity: 88, min_humidity: 48, mean_humidity: 74, max_wind: 32, mean_wind: 21, precipitation: 0, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 29, min_temp: 21, mean_temp: 26, max_humidity: 94, min_humidity: 32, mean_humidity: 64, max_wind: 35, mean_wind: 18, precipitation: 0, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 25, min_temp: 21, mean_temp: 23, max_humidity: 83, min_humidity: 57, mean_humidity: 73, max_wind: 24, mean_wind: 14, precipitation: 0, cloud_cover: 7, events: 'Rain', class: 0},
+    { max_temp: 27, min_temp: 21, mean_temp: 24, max_humidity: 94, min_humidity: 55, mean_humidity: 82, max_wind: 27, mean_wind: 14, precipitation: 1, cloud_cover: 8, events: 'Rain', class: 0},
+    { max_temp: 24, min_temp: 19, mean_temp: 22, max_humidity: 100, min_humidity: 73, mean_humidity: 88, max_wind: 42, mean_wind: 19, precipitation: 4, cloud_cover: 7, events: 'Rain', class: 0},
+    { max_temp: 24, min_temp: 18, mean_temp: 21, max_humidity: 94, min_humidity: 40, mean_humidity: 76, max_wind: 35, mean_wind: 24, precipitation: 0, cloud_cover: 4, events: 'Rain', class: 0},
+    { max_temp: 24, min_temp: 19, mean_temp: 22, max_humidity: 83, min_humidity: 53, mean_humidity: 72, max_wind: 24, mean_wind: 11, precipitation: 0, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 29, min_temp: 21, mean_temp: 25, max_humidity: 100, min_humidity: 48, mean_humidity: 82, max_wind: 34, mean_wind: 14, precipitation: 19, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 26, min_temp: 20, mean_temp: 23, max_humidity: 94, min_humidity: 21, mean_humidity: 53, max_wind: 29, mean_wind: 16, precipitation: 0, cloud_cover: 6, events: '', class: 1},
+    { max_temp: 25, min_temp: 18, mean_temp: 22, max_humidity: 65, min_humidity: 17, mean_humidity: 45, max_wind: 32, mean_wind: 21, precipitation: 0, cloud_cover: 1, events: '', class: 1},
+    { max_temp: 24, min_temp: 19, mean_temp: 21, max_humidity: 83, min_humidity: 47, mean_humidity: 63, max_wind: 26, mean_wind: 21, precipitation: 0, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 24, min_temp: 19, mean_temp: 21, max_humidity: 73, min_humidity: 43, mean_humidity: 58, max_wind: 27, mean_wind: 23, precipitation: 0, cloud_cover: 4, events: '', class: 1},
+    { max_temp: 26, min_temp: 19, mean_temp: 22, max_humidity: 73, min_humidity: 44, mean_humidity: 62, max_wind: 34, mean_wind: 13, precipitation: 0, cloud_cover: 3, events: '', class: 1},
+    { max_temp: 29, min_temp: 20, mean_temp: 24, max_humidity: 88, min_humidity: 31, mean_humidity: 63, max_wind: 39, mean_wind: 18, precipitation: 0, cloud_cover: 2, events: '', class: 1},
+    { max_temp: 34, min_temp: 21, mean_temp: 27, max_humidity: 94, min_humidity: 20, mean_humidity: 61, max_wind: 37, mean_wind: 18, precipitation: 4, cloud_cover: 3, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 22, min_temp: 19, mean_temp: 21, max_humidity: 94, min_humidity: 71, mean_humidity: 85, max_wind: 40, mean_wind: 24, precipitation: 0, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 22, min_temp: 18, mean_temp: 20, max_humidity: 94, min_humidity: 51, mean_humidity: 74, max_wind: 34, mean_wind: 27, precipitation: 1, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 23, min_temp: 18, mean_temp: 21, max_humidity: 94, min_humidity: 57, mean_humidity: 87, max_wind: 35, mean_wind: 18, precipitation: 2, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 23, min_temp: 18, mean_temp: 21, max_humidity: 94, min_humidity: 52, mean_humidity: 80, max_wind: 32, mean_wind: 19, precipitation: 0, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 24, min_temp: 19, mean_temp: 21, max_humidity: 94, min_humidity: 56, mean_humidity: 76, max_wind: 27, mean_wind: 18, precipitation: 3, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 26, min_temp: 19, mean_temp: 22, max_humidity: 94, min_humidity: 42, mean_humidity: 72, max_wind: 21, mean_wind: 11, precipitation: 0, cloud_cover: 4, events: 'Rain', class: 0},
+    { max_temp: 30, min_temp: 18, mean_temp: 24, max_humidity: 100, min_humidity: 27, mean_humidity: 69, max_wind: 42, mean_wind: 13, precipitation: 13, cloud_cover: 3, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 24, min_temp: 19, mean_temp: 22, max_humidity: 88, min_humidity: 60, mean_humidity: 78, max_wind: 47, mean_wind: 24, precipitation: 0, cloud_cover: 5, events: '', class: 1},
+    { max_temp: 27, min_temp: 19, mean_temp: 23, max_humidity: 83, min_humidity: 45, mean_humidity: 68, max_wind: 26, mean_wind: 13, precipitation: 0, cloud_cover: 4, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 28, min_temp: 21, mean_temp: 24, max_humidity: 88, min_humidity: 23, mean_humidity: 66, max_wind: 34, mean_wind: 18, precipitation: 0, cloud_cover: 3, events: '', class: 1},
+    { max_temp: 27, min_temp: 20, mean_temp: 23, max_humidity: 88, min_humidity: 33, mean_humidity: 63, max_wind: 27, mean_wind: 11, precipitation: 0, cloud_cover: 3, events: 'Rain', class: 0},
+    { max_temp: 28, min_temp: 22, mean_temp: 25, max_humidity: 78, min_humidity: 30, mean_humidity: 58, max_wind: 32, mean_wind: 16, precipitation: 0, cloud_cover: 2, events: '', class: 1},
+    { max_temp: 28, min_temp: 19, mean_temp: 24, max_humidity: 83, min_humidity: 30, mean_humidity: 59, max_wind: 34, mean_wind: 14, precipitation: 0, cloud_cover: 2, events: '', class: 1},
+    { max_temp: 28, min_temp: 19, mean_temp: 23, max_humidity: 83, min_humidity: 37, mean_humidity: 63, max_wind: 29, mean_wind: 14, precipitation: 28, cloud_cover: 4, events: 'Rain', class: 0},
+    { max_temp: 24, min_temp: 18, mean_temp: 21, max_humidity: 100, min_humidity: 59, mean_humidity: 82, max_wind: 42, mean_wind: 26, precipitation: 0, cloud_cover: 4, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 28, min_temp: 18, mean_temp: 23, max_humidity: 94, min_humidity: 29, mean_humidity: 65, max_wind: 37, mean_wind: 14, precipitation: 0, cloud_cover: 4, events: '', class: 1},
+    { max_temp: 27, min_temp: 20, mean_temp: 23, max_humidity: 94, min_humidity: 41, mean_humidity: 66, max_wind: 34, mean_wind: 18, precipitation: 10, cloud_cover: 4, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 29, min_temp: 19, mean_temp: 24, max_humidity: 83, min_humidity: 19, mean_humidity: 52, max_wind: 39, mean_wind: 18, precipitation: 4, cloud_cover: 2, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 28, min_temp: 15, mean_temp: 21, max_humidity: 59, min_humidity: 14, mean_humidity: 40, max_wind: 34, mean_wind: 18, precipitation: 0, cloud_cover: 1, events: '', class: 1},
+    { max_temp: 29, min_temp: 16, mean_temp: 22, max_humidity: 72, min_humidity: 16, mean_humidity: 44, max_wind: 27, mean_wind: 13, precipitation: 0, cloud_cover: 0, events: '', class: 1},
+    { max_temp: 24, min_temp: 18, mean_temp: 21, max_humidity: 88, min_humidity: 43, mean_humidity: 72, max_wind: 39, mean_wind: 18, precipitation: 0, cloud_cover: 3, events: '', class: 1},
+    { max_temp: 27, min_temp: 19, mean_temp: 23, max_humidity: 83, min_humidity: 40, mean_humidity: 65, max_wind: 32, mean_wind: 16, precipitation: 0, cloud_cover: 3, events: 'Rain', class: 0},
+    { max_temp: 27, min_temp: 21, mean_temp: 24, max_humidity: 88, min_humidity: 36, mean_humidity: 64, max_wind: 32, mean_wind: 14, precipitation: 0, cloud_cover: 4, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 30, min_temp: 18, mean_temp: 24, max_humidity: 88, min_humidity: 33, mean_humidity: 68, max_wind: 32, mean_wind: 14, precipitation: 1, cloud_cover: 3, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 29, min_temp: 20, mean_temp: 24, max_humidity: 88, min_humidity: 44, mean_humidity: 70, max_wind: 27, mean_wind: 19, precipitation: 0, cloud_cover: 5, events: '', class: 1},
+    { max_temp: 23, min_temp: 17, mean_temp: 20, max_humidity: 94, min_humidity: 62, mean_humidity: 85, max_wind: 58, mean_wind: 29, precipitation: 35, cloud_cover: 4, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 25, min_temp: 17, mean_temp: 21, max_humidity: 94, min_humidity: 55, mean_humidity: 80, max_wind: 24, mean_wind: 13, precipitation: 0, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 25, min_temp: 20, mean_temp: 22, max_humidity: 94, min_humidity: 65, mean_humidity: 85, max_wind: 39, mean_wind: 13, precipitation: 13, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 23, min_temp: 19, mean_temp: 21, max_humidity: 94, min_humidity: 59, mean_humidity: 82, max_wind: 35, mean_wind: 13, precipitation: 5, cloud_cover: 7, events: 'Rain', class: 0},
+    { max_temp: 25, min_temp: 18, mean_temp: 21, max_humidity: 94, min_humidity: 53, mean_humidity: 77, max_wind: 16, mean_wind: 10, precipitation: 1, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 23, min_temp: 19, mean_temp: 21, max_humidity: 89, min_humidity: 60, mean_humidity: 75, max_wind: 35, mean_wind: 19, precipitation: 0, cloud_cover: 6, events: '', class: 1},
+    { max_temp: 25, min_temp: 19, mean_temp: 22, max_humidity: 94, min_humidity: 50, mean_humidity: 73, max_wind: 27, mean_wind: 14, precipitation: 2, cloud_cover: 4, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 24, min_temp: 18, mean_temp: 21, max_humidity: 94, min_humidity: 49, mean_humidity: 74, max_wind: 19, mean_wind: 13, precipitation: 0, cloud_cover: 2, events: '', class: 1},
+    { max_temp: 28, min_temp: 17, mean_temp: 22, max_humidity: 88, min_humidity: 34, mean_humidity: 68, max_wind: 32, mean_wind: 13, precipitation: 0, cloud_cover: 4, events: '', class: 1},
+    { max_temp: 27, min_temp: 18, mean_temp: 22, max_humidity: 88, min_humidity: 44, mean_humidity: 73, max_wind: 26, mean_wind: 11, precipitation: 0, cloud_cover: 1, events: '', class: 1},
+    { max_temp: 28, min_temp: 19, mean_temp: 23, max_humidity: 94, min_humidity: 44, mean_humidity: 73, max_wind: 27, mean_wind: 13, precipitation: 0, cloud_cover: 4, events: 'Fog', class: 1},
+    { max_temp: 22, min_temp: 19, mean_temp: 20, max_humidity: 94, min_humidity: 72, mean_humidity: 85, max_wind: 37, mean_wind: 26, precipitation: 3, cloud_cover: 6, events: 'Rain-Thunderstorm', class: 0},
+    { max_temp: 23, min_temp: 18, mean_temp: 20, max_humidity: 94, min_humidity: 64, mean_humidity: 80, max_wind: 45, mean_wind: 18, precipitation: 0, cloud_cover: 4, events: 'Fog', class: 1},
+    { max_temp: 21, min_temp: 17, mean_temp: 19, max_humidity: 94, min_humidity: 56, mean_humidity: 81, max_wind: 45, mean_wind: 24, precipitation: 8, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 22, min_temp: 16, mean_temp: 19, max_humidity: 88, min_humidity: 39, mean_humidity: 67, max_wind: 35, mean_wind: 24, precipitation: 2, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 23, min_temp: 17, mean_temp: 20, max_humidity: 83, min_humidity: 41, mean_humidity: 65, max_wind: 19, mean_wind: 11, precipitation: 0, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 24, min_temp: 16, mean_temp: 20, max_humidity: 82, min_humidity: 45, mean_humidity: 64, max_wind: 21, mean_wind: 11, precipitation: 0, cloud_cover: 5, events: '', class: 1},
+    { max_temp: 22, min_temp: 18, mean_temp: 20, max_humidity: 94, min_humidity: 62, mean_humidity: 79, max_wind: 13, mean_wind: 10, precipitation: 2, cloud_cover: 7, events: 'Rain', class: 0},
+    { max_temp: 27, min_temp: 19, mean_temp: 23, max_humidity: 100, min_humidity: 40, mean_humidity: 76, max_wind: 35, mean_wind: 16, precipitation: 7, cloud_cover: 6, events: 'Rain', class: 0},
+    { max_temp: 21, min_temp: 17, mean_temp: 19, max_humidity: 88, min_humidity: 59, mean_humidity: 74, max_wind: 52, mean_wind: 31, precipitation: 1, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 21, min_temp: 16, mean_temp: 18, max_humidity: 94, min_humidity: 45, mean_humidity: 73, max_wind: 39, mean_wind: 27, precipitation: 2, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 19, min_temp: 14, mean_temp: 17, max_humidity: 88, min_humidity: 57, mean_humidity: 74, max_wind: 40, mean_wind: 24, precipitation: 1, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 21, min_temp: 14, mean_temp: 17, max_humidity: 100, min_humidity: 39, mean_humidity: 76, max_wind: 39, mean_wind: 23, precipitation: 9, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 21, min_temp: 14, mean_temp: 18, max_humidity: 88, min_humidity: 56, mean_humidity: 70, max_wind: 35, mean_wind: 24, precipitation: 0, cloud_cover: 3, events: 'Rain', class: 0},
+    { max_temp: 21, min_temp: 13, mean_temp: 17, max_humidity: 82, min_humidity: 40, mean_humidity: 66, max_wind: 35, mean_wind: 19, precipitation: 0, cloud_cover: 3, events: '', class: 1},
+    { max_temp: 26, min_temp: 13, mean_temp: 19, max_humidity: 82, min_humidity: 20, mean_humidity: 54, max_wind: 27, mean_wind: 18, precipitation: 0, cloud_cover: 1, events: '', class: 1},
+    { max_temp: 19, min_temp: 16, mean_temp: 18, max_humidity: 77, min_humidity: 35, mean_humidity: 56, max_wind: 32, mean_wind: 19, precipitation: 0, cloud_cover: 2, events: '', class: 1},
+    { max_temp: 24, min_temp: 12, mean_temp: 18, max_humidity: 83, min_humidity: 32, mean_humidity: 58, max_wind: 26, mean_wind: 13, precipitation: 0, cloud_cover: 2, events: '', class: 1},
+    { max_temp: 23, min_temp: 12, mean_temp: 18, max_humidity: 73, min_humidity: 23, mean_humidity: 49, max_wind: 23, mean_wind: 13, precipitation: 0, cloud_cover: 1, events: '', class: 1},
+    { max_temp: 25, min_temp: 12, mean_temp: 19, max_humidity: 77, min_humidity: 20, mean_humidity: 51, max_wind: 19, mean_wind: 13, precipitation: 0, cloud_cover: 0, events: '', class: 1},
+    { max_temp: 24, min_temp: 13, mean_temp: 19, max_humidity: 72, min_humidity: 26, mean_humidity: 53, max_wind: 16, mean_wind: 13, precipitation: 0, cloud_cover: 0, events: '', class: 1},
+    { max_temp: 30, min_temp: 14, mean_temp: 22, max_humidity: 88, min_humidity: 11, mean_humidity: 52, max_wind: 37, mean_wind: 16, precipitation: 0, cloud_cover: 1, events: '', class: 1},
+    { max_temp: 22, min_temp: 17, mean_temp: 19, max_humidity: 94, min_humidity: 47, mean_humidity: 68, max_wind: 34, mean_wind: 26, precipitation: 5, cloud_cover: 4, events: 'Rain', class: 0},
+    { max_temp: 24, min_temp: 14, mean_temp: 19, max_humidity: 88, min_humidity: 37, mean_humidity: 66, max_wind: 21, mean_wind: 11, precipitation: 0, cloud_cover: 6, events: '', class: 1},
+    { max_temp: 19, min_temp: 16, mean_temp: 17, max_humidity: 94, min_humidity: 50, mean_humidity: 78, max_wind: 34, mean_wind: 23, precipitation: 2, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 22, min_temp: 16, mean_temp: 19, max_humidity: 94, min_humidity: 49, mean_humidity: 71, max_wind: 23, mean_wind: 13, precipitation: 0, cloud_cover: 5, events: 'Rain', class: 0},
+    { max_temp: 26, min_temp: 14, mean_temp: 20, max_humidity: 88, min_humidity: 29, mean_humidity: 62, max_wind: 27, mean_wind: 16, precipitation: 0, cloud_cover: 4, events: '', class: 1}
+];
+
+
+var fields = [
+  { name: "max_temp", measure: nn.comparisonMethods.number },
+  { name: "min_temp", measure: nn.comparisonMethods.number },
+  { name: "mean_temp", measure: nn.comparisonMethods.number },
+  { name: "max_humidity", measure: nn.comparisonMethods.number },
+  { name: "min_humidity", measure: nn.comparisonMethods.number },
+  { name: "mean_humidity", measure: nn.comparisonMethods.number },
+  { name: "max_wind", measure: nn.comparisonMethods.number },
+  { name: "mean_wind", measure: nn.comparisonMethods.number },
+  { name: "precipitation", measure: nn.comparisonMethods.number },
+  { name: "cloud_cover", measure: nn.comparisonMethods.number },
+  { name: "events", measure: nn.comparisonMethods.word },
+
+];
+
+
 app.set('title', 'Shorts?');
 app.get('/weather/:lat/:lon', cors(corsOptions), function(req, res){
 
     request("http://api.openweathermap.org/data/2.5/forecast/daily?cnt=1&units=metric&lat=" + req.params.lat + "&lon=" + req.params.lon + "&mode=json", function(error, response, body) {
         if (!error && response.statusCode == 200) {
             var data = JSON.parse(body);
-            var r = buildWeather(data.list[0]);
+
+            console.log();
+
+            var query = {   max_temp: data.list[0].temp.max, 
+                            min_temp: data.list[0].temp.min, 
+                            mean_humidity: data.list[0].humidity,
+                            precipitation: data.list[0].rain,
+                            mean_wind: data.list[0].speed,
+                            cloud_cover: data.clouds,
+                            events: data.weather[0].main
+                             };
+
+
+            nn.findMostSimilar(query, items, fields, function(nearestNeighbor, probability) {
+              console.log(query);
+              console.log(nearestNeighbor);
+              console.log(probability);
+              query.class = nearestNeighbor.class;
+            });
+
 
             res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify(r));
+            res.end(JSON.stringify(query));
         } else {
             // HANDLE THE ERROR
         }
@@ -37,129 +165,5 @@ var server = app.listen(3000, function() {
 });
 
 
-function buildWeather(data) {
-    // console.log('BUILDING WEATHER FROM DATA:');
-    // console.log(data);
-    var obj = {
-        max_temp: data.temp.max,
-        min_temp: data.temp.min,
-        humidity: data.humidity,
-        precipitation: data.rain,
-        wind: data.speed,
-        cloud_cover: data.clouds,
-        events: data.weather[0].main,
-        class: classifier.categorize(_getValuesFromJSON(obj))
-    };
 
-    // console.log(obj);
-    return obj;
-}
 
-function _kelvinToCelcius(temp) {
-    return parseInt(temp - 273.15);
-}
-
-function _getValuesFromJSON(r) {
-    // Get the values as a string
-    var values = [];
-    for (var key in r) {
-        if (r.hasOwnProperty(key)) {
-            var val = r[key];
-            values.push(val);
-        }
-    }
-
-    return values.join(',');
-}
-
-function _classifierLearn() {
-    classifier.learn("27,21,74,0,24,3,", "1")
-    classifier.learn("29,22,61,0,23,2,", "1")
-    classifier.learn("29,22,54,0,29,1,", "1")
-    classifier.learn("25,19,74,1,27,6,Rain", "0")
-    classifier.learn("22,18,51,0,27,6,", "1")
-    classifier.learn("23,17,59,0,14,5,Rain", "0")
-    classifier.learn("27,16,55,0,14,2,", "1")
-    classifier.learn("30,19,56,0,21,1,", "1")
-    classifier.learn("30,21,61,0,24,2,", "1")
-    classifier.learn("23,20,78,0,27,6,Rain", "0")
-    classifier.learn("25,20,78,0,19,6,Rain", "0")
-    classifier.learn("27,21,74,0,21,6,Rain", "0")
-    classifier.learn("29,21,64,0,18,6,Rain", "0")
-    classifier.learn("25,21,73,0,14,7,Rain", "0")
-    classifier.learn("27,21,82,1,14,8,Rain", "0")
-    classifier.learn("24,19,88,4,19,7,Rain", "0")
-    classifier.learn("24,18,76,0,24,4,Rain", "0")
-    classifier.learn("24,19,72,0,11,5,Rain", "0")
-    classifier.learn("29,21,82,19,14,6,Rain", "0")
-    classifier.learn("26,20,53,0,16,6,", "1")
-    classifier.learn("25,18,45,0,21,1,", "1")
-    classifier.learn("24,19,63,0,21,5,Rain", "0")
-    classifier.learn("24,19,58,0,23,4,", "1")
-    classifier.learn("26,19,62,0,13,3,", "1")
-    classifier.learn("29,20,63,0,18,2,", "1")
-    classifier.learn("34,21,61,4,18,3,Rain-Thunderstorm", "0")
-    classifier.learn("22,19,85,0,24,6,Rain", "0")
-    classifier.learn("22,18,74,1,27,6,Rain", "0")
-    classifier.learn("23,18,87,2,18,6,Rain", "0")
-    classifier.learn("23,18,80,0,19,6,Rain", "0")
-    classifier.learn("24,19,76,3,18,5,Rain", "0")
-    classifier.learn("26,19,72,0,11,4,Rain", "0")
-    classifier.learn("30,18,69,13,13,3,Rain-Thunderstorm", "0")
-    classifier.learn("24,19,78,0,24,5,", "1")
-    classifier.learn("27,19,68,0,13,4,Rain-Thunderstorm", "0")
-    classifier.learn("28,21,66,0,18,3,", "1")
-    classifier.learn("27,20,63,0,11,3,Rain", "0")
-    classifier.learn("28,22,58,0,16,2,", "1")
-    classifier.learn("28,19,59,0,14,2,", "1")
-    classifier.learn("28,19,63,28,14,4,Rain", "0")
-    classifier.learn("24,18,82,0,26,4,Rain-Thunderstorm", "0")
-    classifier.learn("28,18,65,0,14,4,", "1")
-    classifier.learn("27,20,66,10,18,4,Rain-Thunderstorm", "0")
-    classifier.learn("29,19,52,4,18,2,Rain-Thunderstorm", "0")
-    classifier.learn("28,15,40,0,18,1,", "1")
-    classifier.learn("29,16,44,0,13,0,", "1")
-    classifier.learn("24,18,72,0,18,3,", "1")
-    classifier.learn("27,19,65,0,16,3,Rain", "0")
-    classifier.learn("27,21,64,0,14,4,Rain-Thunderstorm", "0")
-    classifier.learn("30,18,68,1,14,3,Rain-Thunderstorm", "0")
-    classifier.learn("29,20,70,0,19,5,", "1")
-    classifier.learn("23,17,85,35,29,4,Rain-Thunderstorm", "0")
-    classifier.learn("25,17,80,0,13,5,Rain", "0")
-    classifier.learn("25,20,85,13,13,6,Rain", "0")
-    classifier.learn("23,19,82,5,13,7,Rain", "0")
-    classifier.learn("25,18,77,1,10,6,Rain", "0")
-    classifier.learn("23,19,75,0,19,6,", "1")
-    classifier.learn("25,19,73,2,14,4,Rain-Thunderstorm", "0")
-    classifier.learn("24,18,74,0,13,2,", "1")
-    classifier.learn("28,17,68,0,13,4,", "1")
-    classifier.learn("27,18,73,0,11,1,", "1")
-    classifier.learn("28,19,73,0,13,4,Fog", "1")
-    classifier.learn("22,19,85,3,26,6,Rain-Thunderstorm", "0")
-    classifier.learn("23,18,80,0,18,4,Fog", "1")
-    classifier.learn("21,17,81,8,24,6,Rain", "0")
-    classifier.learn("22,16,67,2,24,5,Rain", "0")
-    classifier.learn("23,17,65,0,11,5,Rain", "0")
-    classifier.learn("24,16,64,0,11,5,", "1")
-    classifier.learn("22,18,79,2,10,7,Rain", "0")
-    classifier.learn("27,19,76,7,16,6,Rain", "0")
-    classifier.learn("21,17,74,1,31,5,Rain", "0")
-    classifier.learn("21,16,73,2,27,5,Rain", "0")
-    classifier.learn("19,14,74,1,24,5,Rain", "0")
-    classifier.learn("21,14,76,9,23,5,Rain", "0")
-    classifier.learn("21,14,70,0,24,3,Rain", "0")
-    classifier.learn("21,13,66,0,19,3,", "1")
-    classifier.learn("26,13,54,0,18,1,", "1")
-    classifier.learn("19,16,56,0,19,2,", "1")
-    classifier.learn("24,12,58,0,13,2,", "1")
-    classifier.learn("23,12,49,0,13,1,", "1")
-    classifier.learn("25,12,51,0,13,0,", "1")
-    classifier.learn("24,13,53,0,13,0,", "1")
-    classifier.learn("30,14,52,0,16,1,", "1")
-    classifier.learn("22,17,68,5,26,4,Rain", "0")
-    classifier.learn("24,14,66,0,11,6,", "1")
-    classifier.learn("19,16,78,2,23,5,Rain", "0")
-    classifier.learn("22,16,71,0,13,5,Rain", "0")
-    classifier.learn("26,14,62,0,16,4,", "1")
-    classifier.learn("23,16,57,0,19,3,Rain", "0")
-}
