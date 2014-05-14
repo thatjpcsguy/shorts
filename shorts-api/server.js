@@ -108,11 +108,7 @@ var items = [
 var fields = [
   { name: "max_temp", measure: nn.comparisonMethods.number, max: 1000 },
   { name: "min_temp", measure: nn.comparisonMethods.number, max: 1000 },
-  { name: "mean_temp", measure: nn.comparisonMethods.number, max: 1000 },
-  { name: "max_humidity", measure: nn.comparisonMethods.number, max: 1000 },
-  { name: "min_humidity", measure: nn.comparisonMethods.number, max: 1000 },
   { name: "mean_humidity", measure: nn.comparisonMethods.number, max: 1000 },
-  { name: "max_wind", measure: nn.comparisonMethods.number, max: 1000 },
   { name: "mean_wind", measure: nn.comparisonMethods.number, max: 1000 },
   { name: "precipitation", measure: nn.comparisonMethods.number, max: 1000 },
   { name: "cloud_cover", measure: nn.comparisonMethods.number, max: 1000 },
@@ -137,7 +133,8 @@ app.get('/weather/:lat/:lon', cors(corsOptions), function(req, res){
                             precipitation: data.list[0].rain,
                             mean_wind: data.list[0].speed,
                             cloud_cover: data.list[0].clouds,
-                            events: data.list[0].weather[0].main
+                            events: data.list[0].weather[0].main,
+			    class: 0
                              };
 
 
@@ -145,7 +142,7 @@ app.get('/weather/:lat/:lon', cors(corsOptions), function(req, res){
               console.log(query);
               console.log(nearestNeighbor);
               console.log(probability);
-              query.class = nearestNeighbor.class;
+//              query.class = nearestNeighbor.class;
             });
 
 
