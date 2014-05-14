@@ -106,17 +106,18 @@ var items = [
 
 
 var fields = [
-  { name: "max_temp", measure: nn.comparisonMethods.number },
-  { name: "min_temp", measure: nn.comparisonMethods.number },
-  { name: "mean_temp", measure: nn.comparisonMethods.number },
-  { name: "max_humidity", measure: nn.comparisonMethods.number },
-  { name: "min_humidity", measure: nn.comparisonMethods.number },
-  { name: "mean_humidity", measure: nn.comparisonMethods.number },
-  { name: "max_wind", measure: nn.comparisonMethods.number },
-  { name: "mean_wind", measure: nn.comparisonMethods.number },
-  { name: "precipitation", measure: nn.comparisonMethods.number },
-  { name: "cloud_cover", measure: nn.comparisonMethods.number },
+  { name: "max_temp", measure: nn.comparisonMethods.number, max: 1000 },
+  { name: "min_temp", measure: nn.comparisonMethods.number, max: 1000 },
+  { name: "mean_temp", measure: nn.comparisonMethods.number, max: 1000 },
+  { name: "max_humidity", measure: nn.comparisonMethods.number, max: 1000 },
+  { name: "min_humidity", measure: nn.comparisonMethods.number, max: 1000 },
+  { name: "mean_humidity", measure: nn.comparisonMethods.number, max: 1000 },
+  { name: "max_wind", measure: nn.comparisonMethods.number, max: 1000 },
+  { name: "mean_wind", measure: nn.comparisonMethods.number, max: 1000 },
+  { name: "precipitation", measure: nn.comparisonMethods.number, max: 1000 },
+  { name: "cloud_cover", measure: nn.comparisonMethods.number, max: 1000 },
   { name: "events", measure: nn.comparisonMethods.word },
+  { name: "class", measure: nn.comparisonMethods.number, max: 10 },
 
 ];
 
