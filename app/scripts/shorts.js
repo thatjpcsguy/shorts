@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-    console.log('We have liftoff!');
+    var _shortsPositive = ['Shorts are a go!', 'Show off those legs!'];
+    var _shortsNegative = ['Negative on the shorts', 'Maybe not today', 'DON\'T DO IT!'];
 
     function showPosition(position) {
 
@@ -8,11 +9,11 @@ $(document).ready(function() {
 
     }
 
-    function getPrediction(latitude, longitude)
-    {
-        $.get('http://shorts.today:3000/weather/'+latitude+'/'+longitude+'/', function(data) {
+    function getPrediction(latitude, longitude) {
+
+        $.get('http://shorts.today:3000/weather/' + latitude + '/' + longitude + '/', function(data) {
             $('.spinner').remove();
-             $('.loading').remove();
+            $('.loading').remove();
             $('#temp-container').html('<h4>'+(data.prob*100).toFixed(1)+'% Confidence. '+data.events+'. '+Math.ceil(data.max_temp) + '&deg;c</h4>');
             if (data.pred_class === 1)
             {
@@ -26,11 +27,9 @@ $(document).ready(function() {
         });
     }
 
-    function geoIP()
-    {
+    function geoIP() {
         console.log('geoip');
-        $.get('http://freegeoip.net/json/', function(data)
-        {
+        $.get('http://freegeoip.net/json/', function(data) {
             getPrediction(data.latitude, data.longitude);
         });
     }
