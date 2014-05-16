@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-    console.log('We have liftoff!');
+    var _shortsPositive = ['Shorts are a go!', 'Show off those legs!'];
+    var _shortsNegative = ['Negative on the shorts', 'Maybe not today', 'DON\'T DO IT!'];
 
     function showPosition(position) {
 
@@ -8,29 +9,26 @@ $(document).ready(function() {
 
     }
 
-    function getPrediction(latitude, longitude)
-    {
-        $.get('http://shorts.today:3000/weather/'+latitude+'/'+longitude+'/', function(data) {
+    function getPrediction(latitude, longitude) {
+
+        $.get('http://shorts.today:3000/weather/' + latitude + '/' + longitude + '/', function(data) {
             $('.spinner').remove();
-             $('.loading').remove();
-            $('#temp-container').html('<h4>'+(data.prob*100).toFixed(1)+'% Accurate. '+data.events+'. '+Math.ceil(data.max_temp) + '&deg;c</h4>');
-            if (data.pred_class === 1)
-            {
-                $('#prediction-container').html('<h1>Shorts are a go!</h1>');
-            }
-            else
-            {
-                $('#prediction-container').html('<h1>I wouldn\'t recommend shorts today!</h1>');
+            $('.loading').remove();
+            $('#temp-container').html('<h4>' + (data.prob * 100).toFixed(1) + '% Accurate. ' + data.events + '. ' + Math.ceil(data.max_temp) + '&deg;c</h4>');
+            if (data.pred_class === 1) {
+                var response = _shortsPositive[Math.floor((Math.random() * _shortsPositive.length) + 1)];
+                $('#prediction-container').html('<h1>' + response + '</h1>');
+            } else {
+                var response = _shortsNegative[Math.floor((Math.random() * _shortsNegative.length) + 1)];
+                $('#prediction-container').html('<h1>' + response + '</h1>');
             }
             $('#made-container').html('<br /><br /><p>Made by <a href="http://twitter.com/rheotron">@rheotron</a> and <a href="http://twitter.com/thatjpcsguy">@thatjpcsguy</a>. Source code available on <a href="http://github.com/thatjpcsguy/shorts">github</a>.');
         });
     }
 
-    function geoIP()
-    {
+    function geoIP() {
         console.log('geoip');
-        $.get('http://freegeoip.net/json/', function(data)
-        {
+        $.get('http://freegeoip.net/json/', function(data) {
             getPrediction(data.latitude, data.longitude);
         });
     }
