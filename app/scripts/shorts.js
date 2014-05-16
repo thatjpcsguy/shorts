@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    document.body.addEventListener('touchmove', function(event) { // Disable the scrolling
+        event.preventDefault();
+    }, false);
+
     var _shortsPositive = ['Shorts are a go!', 'Show off those legs!'];
     var _shortsNegative = ['Negative on the shorts...', 'Maybe not today buddy...', 'DON\'T DO IT!'];
 
@@ -28,7 +32,6 @@ $(document).ready(function() {
                 $('#prediction-container').html('<h1>' + response + '</h1>');
             }
 
-            console.log(data);
             $('#city-container').html('<h3>' + data.city + '</h3>');
             $('#made-container').html('<br /><br /><p>Made by <a href="http://twitter.com/rheotron">@rheotron</a> and <a href="http://twitter.com/thatjpcsguy">@thatjpcsguy</a>. Source code available on <a href="http://github.com/thatjpcsguy/shorts">github</a>.');
         });
