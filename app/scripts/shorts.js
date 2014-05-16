@@ -1,28 +1,35 @@
 $(document).ready(function() {
 
     var _shortsPositive = ['Shorts are a go!', 'Show off those legs!'];
-    var _shortsNegative = ['Negative on the shorts', 'Maybe not today', 'DON\'T DO IT!'];
+    var _shortsNegative = ['Negative on the shorts...', 'Maybe not today buddy...', 'DON\'T DO IT!'];
+
+    var url = 'http://shorts.today:3000/weather/';
+    if (window.location.host.match(/9000/)) { // If we are running this locally, use localhost for the server
+        url = 'http://localhost:3000/weather/'
+    }
 
     function showPosition(position) {
-
         getPrediction(position.coords.latitude, position.coords.longitude)
-
     }
 
     function getPrediction(latitude, longitude) {
 
-        $.get('http://shorts.today:3000/weather/' + latitude + '/' + longitude + '/', function(data) {
+        $.get(url + latitude + '/' + longitude + '/', function(data) {
             $('.spinner').remove();
             $('.loading').remove();
-            $('#temp-container').html('<h4>'+(data.prob*100).toFixed(1)+'% Confidence. '+data.events+'. '+Math.ceil(data.max_temp) + '&deg;c</h4>');
-            if (data.pred_class === 1)
-            {
-                $('#prediction-container').html('<h1>Shorts are a go!</h1>');
+            $('#temp-container').html('<h4>' + (data.prob * 100).toFixed(1) + '% Confidence. ' + data.events + '. ' + Math.ceil(data.max_temp) + '&deg;c</h4>');
+            if ((data.prob * 100).toFixed(1) < 50) {
+                $('#prediction-container').html('<h1> Your call dude...</h1>');
+            } else if (data.pred_class === 1) {
+                var response = _shortsPositive[Math.floor((Math.random() * _shortsPositive.length))];
+                $('#prediction-container').html('<h1>' + response + '</h1>');
+            } else {
+                var response = _shortsNegative[Math.floor((Math.random() * _shortsNegative.length))];
+                $('#prediction-container').html('<h1>' + response + '</h1>');
             }
-            else
-            {
-                $('#prediction-container').html('<h1>I wouldn\'t recommend shorts today!</h1>');
-            }
+
+            console.log(data);
+            $('#city-container').html('<h3>' + data.city + '</h3>');
             $('#made-container').html('<br /><br /><p>Made by <a href="http://twitter.com/rheotron">@rheotron</a> and <a href="http://twitter.com/thatjpcsguy">@thatjpcsguy</a>. Source code available on <a href="http://github.com/thatjpcsguy/shorts">github</a>.');
         });
     }
