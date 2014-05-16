@@ -13,7 +13,7 @@ $(document).ready(function() {
         $.get('http://shorts.today:3000/weather/'+latitude+'/'+longitude+'/', function(data) {
             $('.spinner').remove();
              $('.loading').remove();
-            $('#temp-container').html('<h4>'+(data.prob*100).toFixed(1)+'% Accurate. '+data.events+'. '+Math.ceil(data.max_temp) + '&deg;c</h4>');
+            $('#temp-container').html('<h4>'+(data.prob*100).toFixed(1)+'% Confidence. '+data.events+'. '+Math.ceil(data.max_temp) + '&deg;c</h4>');
             if (data.pred_class === 1)
             {
                 $('#prediction-container').html('<h1>Shorts are a go!</h1>');
