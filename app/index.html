@@ -13,13 +13,16 @@
     <meta name="description" content="Answering one of lifes biggest questions - can I wear shorts today? Uses your location and the weather to tell you if you should don the shorts.">
 
     <!-- Run in full-screen mode. -->
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,  user-scalable=no" />
 
     <!-- Make the status bar black with white text. -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <!-- Customize home screen title. -->
     <meta name="apple-mobile-web-app-title" content="Shorts?">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
 
     <!-- Disable phone number detection. -->
     <meta name="format-detection" content="telephone=no">
@@ -28,6 +31,7 @@
     <link rel="stylesheet" href="styles/jpcs-social.css">
     <link rel="stylesheet" href="styles/shorts.css">
     <link rel="apple-touch-icon" href="images/shorts.png">
+
     <!-- endbuild -->
 
     <script src="scripts/jquery.min.js"></script>
@@ -35,6 +39,8 @@
     <script src="scripts/shorts.js"></script>
 
     <script type="text/javascript" src="//use.typekit.net/dbv8chl.js"></script>
+
+
     <script type="text/javascript">
     try {
         Typekit.load();
@@ -56,8 +62,12 @@
         <div id="temp-container">
         </div>
 
-        <div id="city-container">
-        </div>
+        <!-- <div id="city-container">
+</div>
+ -->
+
+        <a href="#" id="changeType">
+        </a>
 
         <div id="made-container">
         </div>
@@ -68,7 +78,7 @@
         </div>
 
         <div class="loading">
-            <h3>Loading...</h3>
+            <h4>Loading...</h4>
         </div>
 
     </center>
