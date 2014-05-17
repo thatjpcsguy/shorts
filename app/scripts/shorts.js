@@ -2,6 +2,10 @@ String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 var dataStore;
 
 function _celciusToFahrenheit(degrees) {
@@ -58,6 +62,16 @@ $(document).ready(function() {
         createCookie('degreesType', degreesType, 1000); // Save to the cookie
     });
 
+    var bg = getRandomInt(0, 2);
+    console.log(bg);
+    if (bg == 0) {
+        $('body').addClass('background-one');
+    } else if (bg == 1) {
+        $('body').addClass('background-two');
+    } else if (bg == 2) {
+        $('body').addClass('background-three');
+    }
+
     var _shortsPositive = ['Shorts are a go!', 'Show off those legs!'];
     var _shortsNegative = ['Negative on the shorts...', 'Maybe not today...', 'DON\'T DO IT!'];
 
@@ -68,7 +82,7 @@ $(document).ready(function() {
 
     var degreesType = 'celcius';
 
-    var c = getCookie('degreesType');
+    var c = getCookie('degreesType'); // Get the saved cookie
     if (c) degreesType = c;
 
     function showPosition(position) {
@@ -92,10 +106,10 @@ $(document).ready(function() {
             if ((data.prob * 100).toFixed(1) < 50) {
                 $('#prediction-container').html('<h1> Your call dude...</h1>');
             } else if (data.pred_class === 1) {
-                var response = _shortsPositive[Math.floor((Math.random() * _shortsPositive.length))];
+                var response = _shortsPositive[getRandomInt(0, _shortsPositive.length - 1)];
                 $('#prediction-container').html('<h1>' + response + '</h1>');
             } else {
-                var response = _shortsNegative[Math.floor((Math.random() * _shortsNegative.length))];
+                var response = _shortsNegative[getRandomInt(0, _shortsNegative.length - 1)];
                 $('#prediction-container').html('<h1>' + response + '</h1>');
             }
 

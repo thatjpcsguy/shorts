@@ -11,13 +11,20 @@ h4 {
     margin-top: 20px;
 }
 body {
-    /*background-color: #d35400;*/
-    background-color: #3D67CC;
     font-family:"brandon-grotesque";
     font-weight:"light";
     color: white;
     padding: 0px;
     margin: 0px;
+}
+.background-one {
+    background-color: #f39c12;
+}
+.background-two {
+    background-color: #3D67CC;
+}
+.background-three {
+    background-color:#8e44ad;
 }
 a {
     color: white;
