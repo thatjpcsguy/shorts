@@ -1,4 +1,5 @@
-# Can I Wear Shorts Today?
+# [Can I Wear Shorts Today?](http://shorts.today)
+
 
 ## Setting Up
 
