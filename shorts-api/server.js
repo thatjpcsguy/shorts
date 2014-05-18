@@ -880,10 +880,6 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
             console.log(query);
 
             nn.findMostSimilar(query, items, fields, function(nearestNeighbor, probability) {
-                // console.log(query);
-                // console.log(nearestNeighbor);
-                // console.log(probability);
-
                 console.log(nearestNeighbor);
 
                 query.pred_class = nearestNeighbor.class;
