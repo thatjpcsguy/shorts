@@ -857,6 +857,9 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
         if (!error && response.statusCode == 200) {
             var data = JSON.parse(body);
 
+            console.log('WEATHER DATA!');
+            console.log(data);
+
             var query = {
                 max_temp: data.list[0].temp.max,
                 min_temp: data.list[0].temp.min,
