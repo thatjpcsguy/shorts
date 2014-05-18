@@ -866,7 +866,6 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
                 mean_wind: data.list[0].speed,
                 cloud_cover: data.list[0].clouds,
                 events: data.list[0].weather[0].main,
-                city: data.city.name,
                 class: 0.5 // equal distance from 0 and 1
             };
 
@@ -881,10 +880,21 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
 
             nn.findMostSimilar(query, items, fields, function(nearestNeighbor, probability) {
                 console.log(nearestNeighbor);
+                if (nearestNeighbor){
 
-                query.pred_class = nearestNeighbor.class;
+                    query.pred_class = nearestNeighbor.class;
+                    query.city = data.city.name;
 
-                query.prob = probability;
+                    query.prob = probability;
+                }
+                else {
+
+                    query.pred_class = 0.5;
+                    query.city = data.city.name;
+
+                    query.prob = 0.0;
+                }
+
             });
 
 
