@@ -884,11 +884,21 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
                 // console.log(probability);
 
                 console.log(nearestNeighbor);
+                if (nearestNeighbor){
 
-                query.pred_class = nearestNeighbor.class;
-                query.city = data.city.name;
+                    query.pred_class = nearestNeighbor.class;
+                    query.city = data.city.name;
 
-                query.prob = probability;
+                    query.prob = probability;
+                }
+                else {
+
+                    query.pred_class = 0.5;
+                    query.city = data.city.name;
+
+                    query.prob = 0.0;
+                }
+
             });
 
 
