@@ -875,6 +875,9 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
                 query.precipitation = 0;
             }
 
+            console.log('QUERY!');
+            console.log(query);
+
             nn.findMostSimilar(query, items, fields, function(nearestNeighbor, probability) {
                 // console.log(query);
                 // console.log(nearestNeighbor);
