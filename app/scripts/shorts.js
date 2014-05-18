@@ -97,13 +97,6 @@ $(document).ready(function() {
             $('.spinner').remove();
             $('.loading').remove();
 
-            _gaq.push([
-        '_trackEvent',
-        'Prediction',
-         dataStore.events + '. ' + Math.ceil(dataStore.max_temp) + '&deg;C',
-        response,
-        true
-    ]);
 
             if (degreesType == 'fahrenheit') { // Change to fahrenheit
                 $('#temp-container').html('<h4>' + dataStore.events + '. ' + Math.ceil(_celciusToFahrenheit(dataStore.max_temp)) + '&deg;F</h4>');
@@ -128,6 +121,15 @@ $(document).ready(function() {
             }
             $('#city-container').html('<h3>' + data.city + '</h3>');
             $('#made-container').html('<br /><br /><p>Made by <a href="http://twitter.com/rheotron">@rheotron</a> and <a href="http://twitter.com/thatjpcsguy">@thatjpcsguy</a>. Source code available on <a href="http://github.com/thatjpcsguy/shorts">github</a>.');
+
+            
+                    _gaq.push([
+                '_trackEvent',
+                'Prediction',
+                 dataStore.events + '. ' + Math.ceil(dataStore.max_temp) + '&deg;C',
+                response,
+                true
+            ]);
         });
     }
 
