@@ -97,6 +97,14 @@ $(document).ready(function() {
             $('.spinner').remove();
             $('.loading').remove();
 
+            _gaq.push([
+        '_trackEvent',
+        'Prediction',
+         dataStore.events + '. ' + Math.ceil(dataStore.max_temp) + '&deg;C',
+        response,
+        true
+    ]);
+
             if (degreesType == 'fahrenheit') { // Change to fahrenheit
                 $('#temp-container').html('<h4>' + dataStore.events + '. ' + Math.ceil(_celciusToFahrenheit(dataStore.max_temp)) + '&deg;F</h4>');
             } else if (degreesType == 'celcius') { // Change to celcius
