@@ -6,3 +6,4 @@ dist
 *.log
 app/bower_components
 test/bower_components
+saved-predictions.txt

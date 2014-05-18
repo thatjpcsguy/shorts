@@ -8,6 +8,11 @@ function getRandomInt(min, max) {
 
 var dataStore;
 
+var url = 'http://shorts.today:3000/';
+if (window.location.host.match(/9000/)) { // If we are running this locally, use localhost for the server
+    url = 'http://localhost:3000/'
+}
+
 function _celciusToFahrenheit(degrees) {
     return degrees * (9 / 5) + 32;
 }
@@ -49,6 +54,17 @@ var createCookie = function(name, value, days) {
         }
     }
 
+    function savePrediction() {
+
+        $.post(url + 'savePrediction', dataStore, function(response) {
+            // log the response to the console
+            // console.log("Response: " + response);
+        });
+
+        $('#prediction-confirm-container').remove();
+        alertify.success("Thanks for making us more accurate!");
+    }
+
 
 $(document).ready(function() {
 
@@ -75,11 +91,6 @@ $(document).ready(function() {
     var _shortsPositive = ['Shorts are a go!', 'Show off those legs!'];
     var _shortsNegative = ['Negative on the shorts...', 'Maybe not today...', 'DON\'T DO IT!'];
 
-    var url = 'http://shorts.today:3000/weather/';
-    if (window.location.host.match(/9000/)) { // If we are running this locally, use localhost for the server
-        url = 'http://localhost:3000/weather/'
-    }
-
     var degreesType = 'celcius';
 
     var c = getCookie('degreesType'); // Get the saved cookie
@@ -91,7 +102,7 @@ $(document).ready(function() {
 
     function getPrediction(latitude, longitude) {
 
-        $.get(url + latitude + '/' + longitude + '/', function(data) {
+        $.get(url + 'weather/' + latitude + '/' + longitude + '/', function(data) {
             dataStore = data;
 
             $('.spinner').remove();
@@ -121,7 +132,7 @@ $(document).ready(function() {
             }
             $('#city-container').html('<h3>' + data.city + '</h3>');
             $('#made-container').html('<br /><br /><p>Made by <a href="http://twitter.com/rheotron">@rheotron</a> and <a href="http://twitter.com/thatjpcsguy">@thatjpcsguy</a>. Source code available on <a href="http://github.com/thatjpcsguy/shorts">github</a>.');
-
+            $('#prediction-confirm-container').removeAttr('style');
             ga('send', 'event', 'Prediction', dataStore.events + '. ' + Math.ceil(dataStore.max_temp) + '&deg;C', response, 1);
 
         });

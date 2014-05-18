@@ -8,6 +8,9 @@ var express = require('express');
 var app = express();
 var cors = require('cors');
 var nn = require('nearest-neighbor');
+var fs = require('fs');
+
+app.use(express.bodyParser());
 
 // var corsOptions = {
 //   origin: 'http://shorts.today'
@@ -880,14 +883,13 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
 
             nn.findMostSimilar(query, items, fields, function(nearestNeighbor, probability) {
                 console.log(nearestNeighbor);
-                if (nearestNeighbor){
+                if (nearestNeighbor) {
 
                     query.pred_class = nearestNeighbor.class;
                     query.city = data.city.name;
 
                     query.prob = probability;
-                }
-                else {
+                } else {
 
                     query.pred_class = 0.5;
                     query.city = data.city.name;
@@ -905,6 +907,21 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
         }
     });
 
+});
+
+
+
+app.post('/savePrediction', function(req, res) {
+    console.log('SAVING PREDICTION');
+    console.log(req.body);
+
+    fs.appendFile("saved-predictions.txt", JSON.stringify(req.body), function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("The file was saved!");
+        }
+    });
 });
 
 

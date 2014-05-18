@@ -35,6 +35,9 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/jpcs-social.css">
     <link rel="stylesheet" href="styles/shorts.css">
+    <link rel="stylesheet" href="bower_components/alertify.js/themes/alertify.core.css">
+    <link rel="stylesheet" href="bower_components/alertify.js/themes/alertify.bootstrap.css">
+
     <link rel="apple-touch-icon" href="images/shorts.png">
 
     <!-- endbuild -->
@@ -42,6 +45,7 @@
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/modernizr.js"></script>
     <script src="scripts/shorts.js"></script>
+    <script src="bower_components/alertify.js/lib/alertify.min.js"></script>
 
     <script type="text/javascript" src="//use.typekit.net/dbv8chl.js"></script>
 
@@ -67,9 +71,11 @@
         <div id="temp-container">
         </div>
 
-        <!-- <div id="city-container">
-</div>
- -->
+        <div id="prediction-confirm-container" style="display:none;">
+            <a href="#" onclick="savePrediction()" style="color: #2ecc71">Yup</a> &nbsp; or &nbsp; <a href="#" style="color:#e74c3c">Nope</a>
+            <br/>
+            <br/>
+        </div>
 
         <a href="#" id="changeType">
         </a>
@@ -105,16 +111,16 @@
     ga('send', 'pageview');
 
     // Track basic JavaScript errors
-window.addEventListener('error', function(e) {
-    ga('send', 'event', 'JavaScript Error', e.message,  e.filename + ':  ' + e.lineno, 1);
+    window.addEventListener('error', function(e) {
+        ga('send', 'event', 'JavaScript Error', e.message, e.filename + ':  ' + e.lineno, 1);
 
-});
+    });
 
-// Track AJAX errors (jQuery API)
-$(document).ajaxError(function(e, request, settings) {
-     ga('send', 'event', 'Ajax Error', settings.url,  e.result, 1);
+    // Track AJAX errors (jQuery API)
+    $(document).ajaxError(function(e, request, settings) {
+        ga('send', 'event', 'Ajax Error', settings.url, e.result, 1);
 
-});
+    });
     </script>
 
 </body>
