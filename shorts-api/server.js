@@ -878,7 +878,10 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
                 // console.log(nearestNeighbor);
                 // console.log(probability);
 
+                console.log(nearestNeighbor);
+
                 query.pred_class = nearestNeighbor.class;
+
                 query.prob = probability;
             });
 
