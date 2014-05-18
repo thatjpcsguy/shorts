@@ -19,7 +19,7 @@ var items = [{
     mean_wind: 24,
     precipitation: 0,
     cloud_cover: 3,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 29,
@@ -27,7 +27,7 @@ var items = [{
     mean_wind: 23,
     precipitation: 0,
     cloud_cover: 2,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 29,
@@ -35,7 +35,7 @@ var items = [{
     mean_wind: 29,
     precipitation: 0,
     cloud_cover: 1,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 25,
@@ -51,7 +51,7 @@ var items = [{
     mean_wind: 27,
     precipitation: 0,
     cloud_cover: 6,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 23,
@@ -67,7 +67,7 @@ var items = [{
     mean_wind: 14,
     precipitation: 0,
     cloud_cover: 2,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 30,
@@ -75,7 +75,7 @@ var items = [{
     mean_wind: 21,
     precipitation: 0,
     cloud_cover: 1,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 30,
@@ -83,7 +83,7 @@ var items = [{
     mean_wind: 24,
     precipitation: 0,
     cloud_cover: 2,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 23,
@@ -171,7 +171,7 @@ var items = [{
     mean_wind: 16,
     precipitation: 0,
     cloud_cover: 6,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 25,
@@ -179,7 +179,7 @@ var items = [{
     mean_wind: 21,
     precipitation: 0,
     cloud_cover: 1,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 24,
@@ -195,7 +195,7 @@ var items = [{
     mean_wind: 23,
     precipitation: 0,
     cloud_cover: 4,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 26,
@@ -203,7 +203,7 @@ var items = [{
     mean_wind: 13,
     precipitation: 0,
     cloud_cover: 3,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 29,
@@ -211,7 +211,7 @@ var items = [{
     mean_wind: 18,
     precipitation: 0,
     cloud_cover: 2,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 34,
@@ -283,7 +283,7 @@ var items = [{
     mean_wind: 24,
     precipitation: 0,
     cloud_cover: 5,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 27,
@@ -299,7 +299,7 @@ var items = [{
     mean_wind: 18,
     precipitation: 0,
     cloud_cover: 3,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 27,
@@ -315,7 +315,7 @@ var items = [{
     mean_wind: 16,
     precipitation: 0,
     cloud_cover: 2,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 28,
@@ -323,7 +323,7 @@ var items = [{
     mean_wind: 14,
     precipitation: 0,
     cloud_cover: 2,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 28,
@@ -347,7 +347,7 @@ var items = [{
     mean_wind: 14,
     precipitation: 0,
     cloud_cover: 4,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 27,
@@ -371,7 +371,7 @@ var items = [{
     mean_wind: 18,
     precipitation: 0,
     cloud_cover: 1,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 29,
@@ -379,7 +379,7 @@ var items = [{
     mean_wind: 13,
     precipitation: 0,
     cloud_cover: 0,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 24,
@@ -387,7 +387,7 @@ var items = [{
     mean_wind: 18,
     precipitation: 0,
     cloud_cover: 3,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 27,
@@ -419,7 +419,7 @@ var items = [{
     mean_wind: 19,
     precipitation: 0,
     cloud_cover: 5,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 23,
@@ -467,7 +467,7 @@ var items = [{
     mean_wind: 19,
     precipitation: 0,
     cloud_cover: 6,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 25,
@@ -483,7 +483,7 @@ var items = [{
     mean_wind: 13,
     precipitation: 0,
     cloud_cover: 2,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 28,
@@ -491,7 +491,7 @@ var items = [{
     mean_wind: 13,
     precipitation: 0,
     cloud_cover: 4,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 27,
@@ -499,7 +499,7 @@ var items = [{
     mean_wind: 11,
     precipitation: 0,
     cloud_cover: 1,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 28,
@@ -555,7 +555,7 @@ var items = [{
     mean_wind: 11,
     precipitation: 0,
     cloud_cover: 5,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 22,
@@ -619,7 +619,7 @@ var items = [{
     mean_wind: 19,
     precipitation: 0,
     cloud_cover: 3,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 26,
@@ -627,7 +627,7 @@ var items = [{
     mean_wind: 18,
     precipitation: 0,
     cloud_cover: 1,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 19,
@@ -635,7 +635,7 @@ var items = [{
     mean_wind: 19,
     precipitation: 0,
     cloud_cover: 2,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 24,
@@ -643,7 +643,7 @@ var items = [{
     mean_wind: 13,
     precipitation: 0,
     cloud_cover: 2,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 23,
@@ -651,7 +651,7 @@ var items = [{
     mean_wind: 13,
     precipitation: 0,
     cloud_cover: 1,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 25,
@@ -659,7 +659,7 @@ var items = [{
     mean_wind: 13,
     precipitation: 0,
     cloud_cover: 0,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 24,
@@ -675,7 +675,7 @@ var items = [{
     mean_wind: 16,
     precipitation: 0,
     cloud_cover: 1,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 22,
@@ -691,7 +691,7 @@ var items = [{
     mean_wind: 11,
     precipitation: 0,
     cloud_cover: 6,
-    events: '',
+    events: 'Clouds',
     class: 1
 }, {
     max_temp: 19,
@@ -715,7 +715,7 @@ var items = [{
     mean_wind: 16,
     precipitation: 0,
     cloud_cover: 4,
-    events: '',
+    events: 'Clouds',
     class: 1
 }, {
     max_temp: 36,
@@ -723,7 +723,7 @@ var items = [{
     mean_wind: 16,
     precipitation: 0,
     cloud_cover: 0,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 37,
@@ -731,7 +731,7 @@ var items = [{
     mean_wind: 14,
     precipitation: 0,
     cloud_cover: 0,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 39,
@@ -739,7 +739,7 @@ var items = [{
     mean_wind: 13,
     precipitation: 0,
     cloud_cover: 0,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 36,
@@ -747,7 +747,7 @@ var items = [{
     mean_wind: 13,
     precipitation: 0,
     cloud_cover: 0,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 34,
@@ -755,7 +755,7 @@ var items = [{
     mean_wind: 18,
     precipitation: 0,
     cloud_cover: 0,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 33,
@@ -763,7 +763,7 @@ var items = [{
     mean_wind: 19,
     precipitation: 0,
     cloud_cover: 0,
-    events: '',
+    events: 'Clear',
     class: 1
 }, {
     max_temp: 18,
@@ -771,7 +771,7 @@ var items = [{
     mean_wind: 18,
     precipitation: 0,
     cloud_cover: 3,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 17,
@@ -779,7 +779,7 @@ var items = [{
     mean_wind: 8,
     precipitation: 0,
     cloud_cover: 1,
-    events: '',
+    events: 'Clear',
     class: 0
 }, {
     max_temp: 18,
@@ -787,7 +787,7 @@ var items = [{
     mean_wind: 14,
     precipitation: 0,
     cloud_cover: 4,
-    events: '',
+    events: 'Clouds',
     class: 0
 }, {
     max_temp: 19,
@@ -795,7 +795,7 @@ var items = [{
     mean_wind: 11,
     precipitation: 0,
     cloud_cover: 5,
-    events: '',
+    events: 'Clouds',
     class: 0
 }, {
     max_temp: 24,
@@ -803,7 +803,7 @@ var items = [{
     mean_wind: 19,
     precipitation: 0,
     cloud_cover: 6,
-    events: '',
+    events: 'Clouds',
     class: 0
 }, {
     max_temp: 19,
@@ -811,7 +811,7 @@ var items = [{
     mean_wind: 4,
     precipitation: 0,
     cloud_cover: 6,
-    events: '',
+    events: 'Clouds',
     class: 0
 }];
 
@@ -821,11 +821,11 @@ var items = [{
 var fields = [{
         name: "max_temp",
         measure: nn.comparisonMethods.number,
-        max: 1000
+        max: 100
     }, {
         name: "min_temp",
         measure: nn.comparisonMethods.number,
-        max: 1000
+        max: 100
     }, {
         name: "mean_wind",
         measure: nn.comparisonMethods.number,
@@ -837,14 +837,14 @@ var fields = [{
     }, {
         name: "cloud_cover",
         measure: nn.comparisonMethods.number,
-        max: 1000
+        max: 10
     }, {
         name: "events",
         measure: nn.comparisonMethods.word
     }, {
         name: "class",
         measure: nn.comparisonMethods.number,
-        max: 10
+        max: 1
     },
 
 ];
