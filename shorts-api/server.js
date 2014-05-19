@@ -917,9 +917,9 @@ app.post('/savePrediction', function(req, res) {
     console.log('SAVING PREDICTION');
     // console.log(req.body);
 
-    var str = JSON.stringify(req.body) + "\n";
+    var str = JSON.stringify(req.body) + "\n\n";
 
-    fs.appendFile("saved-predictions.txt", st, function(err) {
+    fs.appendFile("saved-predictions.txt", str, function(err) {
         if (err) {
             console.log(err);
         } else {
