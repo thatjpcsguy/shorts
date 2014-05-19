@@ -12,7 +12,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser')
 
 
-app.use(express.bodyParser());
+app.use(bodyParser());
 
 // var corsOptions = {
 //   origin: 'http://shorts.today'
