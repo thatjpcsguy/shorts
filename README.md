@@ -1,29 +1,16 @@
 # [Can I Wear Shorts Today?](http://shorts.today)
 
 
-## Setting Up
+## Setting Up (For Mac)
 
-Ensure that `php-cgi` is in your `$PATH`.
+####Option 1. - Apache
 
-```
-$ which php-cgi
-```
+Set your apache config to use /app as the root directory. After this you should be good to go at http://localhost or equivalent.
 
-If you get `php-cgi not found`, install it using homebrew:
+####Option 2. - Grunt
 
-```
-$ brew tap homebrew/dupes
-$ brew tap josegonzalez/homebrew-php
-$ brew install php54
-```
 
-Install the gateway module
-
-```
-$ npm install gateway
-```
-
-Then fire up the development server
+Fire up the development server
 
 ```
 $ grunt serve
@@ -57,28 +44,4 @@ To run the backend:
 $ node shorts-api/server.js
 ```
 
-Which should start a server at `localhost:1337`. If not, you may have to go into `shorts-api` and install dependencies:
-
-```
-$ npm install bayes && npm install request
-```
-
-## Installing Packages
-
-Using the dependencies listed in the current `bower.json`
-
-```
-$ bower install
-```
-
-Using a local or remote package
-
-```
-$ bower install <package>
-```
-
-Installing a package and writing it to the `bower.json`
-
-```
-$ bower install <package> --save
-```
+Which should start a server at `localhost:3000`. If not, you may have to install some dependencies.
