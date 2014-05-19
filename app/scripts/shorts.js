@@ -83,7 +83,6 @@ $(document).ready(function() {
     });
 
     var bg = getRandomInt(0, 2);
-    console.log(bg);
     if (bg == 0) {
         $('body').addClass('background-one');
     } else if (bg == 1) {
@@ -149,30 +148,16 @@ $(document).ready(function() {
         });
     }
 
-
     function showError(error) {
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                console.log('User denied the request for Geolocation.');
-                break;
-            case error.POSITION_UNAVAILABLE:
-                console.log('Location information is unavailable.');
-                break;
-            case error.TIMEOUT:
-                console.log('The request to get user location timed out.');
-                break;
-            case error.UNKNOWN_ERROR:
-                console.log('An unknown error occurred.');
-                break;
-        }
+        //error using html5 location
         geoIP();
     }
 
     if (navigator.geolocation) {
-        console.log('HTML Location Available.');
+        //html5 location available
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
-        console.log('HTML Location Not Supported.');
+        //fall back to geo ip
         geoIP();
     }
 
