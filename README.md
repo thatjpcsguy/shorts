@@ -3,7 +3,7 @@
 
 ## Setting Up (For Mac)
 
-####Option 1. - Apache
+####Option 1. - Apache/Nginx
 
 Set your apache config to use /app as the root directory. After this you should be good to go at http://localhost or equivalent.
 
