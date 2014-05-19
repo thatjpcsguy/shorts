@@ -9,6 +9,8 @@ var app = express();
 var cors = require('cors');
 var nn = require('nearest-neighbor');
 var fs = require('fs');
+var bodyParser = require('body-parser')
+
 
 // app.use(express.bodyParser());
 
