@@ -915,9 +915,11 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
 
 app.post('/savePrediction', function(req, res) {
     console.log('SAVING PREDICTION');
-    console.log(req.body);
+    // console.log(req.body);
 
-    fs.appendFile("saved-predictions.txt", JSON.stringify(req.body), function(err) {
+    var str = JSON.stringify(req.body) + "\n";
+
+    fs.appendFile("saved-predictions.txt", st, function(err) {
         if (err) {
             console.log(err);
         } else {
