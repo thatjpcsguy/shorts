@@ -56,11 +56,15 @@ var createCookie = function(name, value, days) {
 
     function savePrediction() {
 
-        $.post(url + 'savePrediction', dataStore, function(response) {
-        });
+        $.post(url + 'savePrediction', dataStore, function(response) {});
 
         $('#prediction-confirm-container').remove();
         alertify.success("Thanks for making us more accurate!");
+    }
+
+    function dontSave() {
+        $('#prediction-confirm-container').remove();
+        alertify.success("Alright! We'll try better next time!");
     }
 
 

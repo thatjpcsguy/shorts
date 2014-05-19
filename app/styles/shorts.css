@@ -17,6 +17,13 @@ body {
     padding: 0px;
     margin: 0px;
 }
+.alertify-logs {
+    top: 10px;
+    right: 10px;
+    font-size: 10pt;
+    font-family:"brandon-grotesque";
+    font-weight:"light";
+}
 .background-one {
     background-color: #f39c12;
 }
