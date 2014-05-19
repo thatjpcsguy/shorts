@@ -53,9 +53,14 @@ var fields = [{
         measure: nn.comparisonMethods.number,
         max: 1
     }
+    , {
+        name: "humidity",
+        measure: nn.comparisonMethods.number,
+        max: 100
+    }
 ];
 
-connection.query('SELECT * FROM learning', function(err, rows) {
+connection.query('SELECT * FROM learning ORDER BY DATE DESC LIMIT 2500', function(err, rows) {
     for (var i = 0; i < rows.length; i++)
     {
         data = {'max_temp': rows[i]['max_temp'], 
@@ -63,12 +68,10 @@ connection.query('SELECT * FROM learning', function(err, rows) {
                 'mean_wind': rows[i]['mean_wind'], 
                 'precipitation': rows[i]['precipitation'], 
                 'cloud_cover': rows[i]['cloud_cover'], 
+                'humidity': rows[i]['mean_humidity'], 
                 'class': rows[i]['class']};
         items.push(data);
-
     }
-   
-    console.log(items[100]);
 });
 
 
@@ -79,14 +82,12 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
         if (!error && response.statusCode == 200) {
             var data = JSON.parse(body);
 
-            console.log('WEATHER DATA!');
-            console.log(data);
-
             var query = {
                 max_temp: data.list[0].temp.max,
                 min_temp: data.list[0].temp.min,
                 mean_wind: data.list[0].speed,
                 cloud_cover: data.list[0].clouds,
+                humidity: data.list[0].humidity,
                 class: 0.5 // equal distance from 0 and 1
             };
 
@@ -96,9 +97,7 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
                 query.precipitation = 0;
             }
 
-            console.log('QUERY!');
-            console.log(query);
-
+            var out;
             nn.findMostSimilar(query, items, fields, function(nearestNeighbor, probability) {
                 console.log(nearestNeighbor);
                 if (nearestNeighbor) {
@@ -108,6 +107,7 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
 
                     query.prob = probability;
                      query.events = data.list[0].weather[0].main;
+
                 } else {
 
                     query.pred_class = 0.5;
@@ -131,34 +131,22 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
 
 
 
-app.post('/savePrediction', function(req, res) {
-    // console.log('SAVING PREDICTION');
-    // console.log(req.body);
-
-    var str = JSON.stringify(req.body) + "\n\n";
-
-    fs.appendFile("saved-predictions.txt", str, function(err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("The file was saved!");
-        }
-    });
+app.post('/savePrediction', function(line, res) {
+    connection.query("INSERT INTO learning (date, class, events, city, cloud_cover, mean_wind, max_temp, min_temp, precipitation, mean_humidity) VALUES (NOW(), '"+line.body['pred_class']+"', '"+line.body['events']+"', '"+line.body['city']+"', '"+line.body['cloud_cover']+"', '"+line.body['mean_wind']+"', '"+line.body['max_temp']+"', '"+line.body['min_temp']+"', '"+line.body['precipitation']+"', '"+line.body['humidity']+"')");
+    console.log("Good Prediction! :)");
+    console.log(line.body);
 });
 
-app.post('/discardPrediction', function(req, res) {
-    // console.log('SAVING PREDICTION');
-    // console.log(req.body);
+app.post('/discardPrediction', function(line, res) {
+    var pred_class = 0;
+    if (line.body['pred_class'] == 0)
+    {
+        pred_class = 1;
+    }
 
-    var str = JSON.stringify(req.body) + "\n\n";
-
-    fs.appendFile("discarded-predictions.txt", str, function(err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("The file was saved!");
-        }
-    });
+    connection.query("INSERT INTO learning (date, class, events, city, cloud_cover, mean_wind, max_temp, min_temp, precipitation, mean_humidity) VALUES (NOW(), '"+pred_class+"', '"+line.body['events']+"', '"+line.body['city']+"', '"+line.body['cloud_cover']+"', '"+line.body['mean_wind']+"', '"+line.body['max_temp']+"', '"+line.body['min_temp']+"', '"+line.body['precipitation']+"', '"+line.body['humidity']+"')");
+    console.log("Bad Prediction! :(");
+    console.log(line.body);
 });
 
 
