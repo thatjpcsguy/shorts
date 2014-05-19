@@ -7,3 +7,4 @@ dist
 app/bower_components
 test/bower_components
 saved-predictions.txt
+discarded-predictions.txt
