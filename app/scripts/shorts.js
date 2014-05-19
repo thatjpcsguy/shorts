@@ -135,8 +135,8 @@ $(document).ready(function() {
                 $('#changeType').html('Change to Celcius');
             }
             $('#city-container').html('<h3>' + data.city + '</h3>');
-            $('#made-container').html('<br /><br /><p>Made by <a href="http://twitter.com/rheotron">@rheotron</a> and <a href="http://twitter.com/thatjpcsguy">@thatjpcsguy</a>. Source code available on <a href="http://github.com/thatjpcsguy/shorts">github</a>.');
             $('#prediction-confirm-container').removeAttr('style');
+            $('#made-container').removeAttr('style');
             ga('send', 'event', 'Prediction', dataStore.events + '. ' + Math.ceil(dataStore.max_temp) + '&deg;C', response, 1);
 
         });

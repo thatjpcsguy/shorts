@@ -79,8 +79,12 @@
             <br/>
             <br/>Was this a good prediction? <a href="#" onclick="savePrediction()" style="color: #2ecc71">Yep</a> &nbsp;/&nbsp; <a href="#" onclick="dontSave()" style="color:#e74c3c">Nup</a>
         </div>
+        <br/>
 
-        <div id="made-container">
+        <div id="made-container" style="display:none;">
+            <p>Made by <a href="http://twitter.com/rheotron">@rheotron</a> and <a href="http://twitter.com/thatjpcsguy">@thatjpcsguy</a>. Source code available on <a href="http://github.com/thatjpcsguy/shorts">github</a>
+                <br/>
+                <br/><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://shorts.today">Tweet it up!</a>
         </div>
 
         <div class="spinner">
@@ -93,7 +97,18 @@
         </div>
 
     </center>
-
+    <script>
+    ! function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + '://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, 'script', 'twitter-wjs');
+    </script>
     <script>
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
