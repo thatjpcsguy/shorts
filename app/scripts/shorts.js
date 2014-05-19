@@ -57,8 +57,6 @@ var createCookie = function(name, value, days) {
     function savePrediction() {
 
         $.post(url + 'savePrediction', dataStore, function(response) {
-            // log the response to the console
-            // console.log("Response: " + response);
         });
 
         $('#prediction-confirm-container').remove();

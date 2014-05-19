@@ -10,7 +10,7 @@ var cors = require('cors');
 var nn = require('nearest-neighbor');
 var fs = require('fs');
 
-app.use(express.bodyParser());
+// app.use(express.bodyParser());
 
 // var corsOptions = {
 //   origin: 'http://shorts.today'
