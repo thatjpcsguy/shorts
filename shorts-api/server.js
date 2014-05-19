@@ -914,12 +914,27 @@ app.get('/weather/:lat/:lon', cors(), function(req, res) {
 
 
 app.post('/savePrediction', function(req, res) {
-    console.log('SAVING PREDICTION');
+    // console.log('SAVING PREDICTION');
     // console.log(req.body);
 
     var str = JSON.stringify(req.body) + "\n\n";
 
     fs.appendFile("saved-predictions.txt", str, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("The file was saved!");
+        }
+    });
+});
+
+app.post('/discardPrediction', function(req, res) {
+    // console.log('SAVING PREDICTION');
+    // console.log(req.body);
+
+    var str = JSON.stringify(req.body) + "\n\n";
+
+    fs.appendFile("discarded-predictions.txt", str, function(err) {
         if (err) {
             console.log(err);
         } else {
