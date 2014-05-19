@@ -24,6 +24,14 @@ body {
     font-family:"brandon-grotesque";
     font-weight:"light";
 }
+
+#widget {
+    width: 90px;
+    display: inline-block;
+    padding: 0;
+}
+
+
 .background-one {
     background-color: #f39c12;
 }
