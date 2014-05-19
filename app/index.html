@@ -64,31 +64,23 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <center>
-
-        <div id="prediction-container">
-        </div>
-
-        <div id="temp-container">
-        </div>
-
-        <a href="#" id="changeType">
-        </a>
-
+        <div id="prediction-container"></div>
+        <div id="temp-container"></div>
+        <a href="#" id="changeType"></a>
         <div id="prediction-confirm-container" style="display:none;">
             <br/>
             <br/>Was this a good prediction? <a href="#" onclick="savePrediction()" style="color: #2ecc71">Yep</a> &nbsp;/&nbsp; <a href="#" onclick="dontSave()" style="color:#e74c3c">Nup</a>
         </div>
         <br/>
-
         <div id="made-container" style="display:none;">
             <p>Made by <a href="http://twitter.com/rheotron">@rheotron</a> and <a href="http://twitter.com/thatjpcsguy">@thatjpcsguy</a>. Source code available on <a href="http://github.com/thatjpcsguy/shorts">github</a>
-                <br/>
-                <br/>
-                <div style="display: inline; width: 300px; text-align: center;">
-                   <a href="https://twitter.com/share" style="display: inline-block; padding: 0" class="twitter-share-button" data-url="http://shorts.today/">Tweet it up!</a>
-                   <div style="top: -6px; display: inline-block; padding: 0;" class="fb-like" data-href="http://shorts.today/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                   <iframe style="margin-left: 20px;"  src="http://ghbtns.com/github-btn.html?user=thatjpcsguy&repo=shorts&type=watch&count=true"  allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-                </div>
+            <br/>
+            <br/>
+            <div style="display: inline; width: 300px; text-align: center;">
+               <a href="https://twitter.com/share" style="display: inline-block; padding: 0" class="twitter-share-button" data-url="http://shorts.today/">Tweet it up!</a>
+               <div style="top: -6px; display: inline-block; padding: 0;" class="fb-like" data-href="http://shorts.today/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+               <iframe style="margin-left: 20px;"  src="http://ghbtns.com/github-btn.html?user=thatjpcsguy&repo=shorts&type=watch&count=true"  allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+            </div>
         </div>
 
         <div class="spinner">
@@ -101,26 +93,8 @@
         </div>
 
     </center>
-    <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=388924007913746&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-    <script>
-    ! function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0],
-            p = /^http:/.test(d.location) ? 'http' : 'https';
-        if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = p + '://platform.twitter.com/widgets.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }
-    }(document, 'script', 'twitter-wjs');
-    </script>
+   
+    <!-- GA JS -->
     <script>
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -148,6 +122,31 @@
         ga('send', 'event', 'Ajax Error', settings.url, e.result, 1);
 
     });
+    </script>
+    
+    <!-- Facebook JS -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=388924007913746&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- Twitter JS -->
+    <script>
+    ! function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + '://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, 'script', 'twitter-wjs');
     </script>
 
 </body>
